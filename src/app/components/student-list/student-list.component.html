@@ -1,0 +1,23 @@
+<div class="student-list">
+  <h1>Student Management System</h1>
+  <ul class="list">
+    <li class="list-item" *ngFor="let item of studentList">
+      <div class="student-info">
+        <button
+          class="btn btn-primary"
+          style="margin-right: 5px"
+          (click)="deleteStudent(item.Id)"
+        >
+          Delete
+        </button>
+
+        <button class="btn btn-primary" (click)="editStudent(item.id)">
+          Edit
+        </button>
+        <h2>{{ item?.title }}</h2>
+        <!-- <p>Age: 16</p> -->
+        <p>{{ item?.body }}</p>
+      </div>
+    </li>
+  </ul>
+</div>
