@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { School } from '../Models/school';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
   private baseUrl = 'http://localhost:5028/api/SchoolTypes'; // Define API endpoint
@@ -18,4 +18,8 @@ export class DataService {
   addSchool(school: School): Observable<School> {
     return this.http.post<School>(this.baseUrl, school);
   }
+
+  // addStudent(school: School): Observable<School> {
+  //   return this.http.post<School>(this.baseUrl, school);
+  // }
 }
