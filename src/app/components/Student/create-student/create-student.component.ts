@@ -30,15 +30,17 @@ export class CreateStudentComponent {
     const studentModel = {
       studentFname: this.fName,
       studentLName: this.lName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
+      fatherName: this.fatherName,
+      motherName: this.motherName,
+      dateOfBirth: this.dob,
+      image: null,
+      imagePath: this.image,
+      birthCertificateNumber: this.birthCert,
+      address: this.address,
+      genderId: this.gender,
     };
 
-    this.http.post('/example', studentModel).subscribe((data) => {
+    this.http.post('http://localhost:5028/api/Students', studentModel).subscribe((data) => {
       console.log(data);
     });
   }

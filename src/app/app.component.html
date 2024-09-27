@@ -1,52 +1,35 @@
 
- <div style="background-color: green; padding: 40px;">
-  <h1 style="color: rgb(240, 250, 240); text-align: center;">Greenmind International School</h1>
-</div>
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home  |</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About  |</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Academic
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Teacher Information Form</a></li>
-            <li><a class="dropdown-item" href="#">Teachers Portal</a></li>
-            <li><a class="dropdown-item" href="#">Curriculums</a></li>
-            <li><a class="dropdown-item" routerLink="/school/create">Add School</a></li>
-            <li><a class="dropdown-item" routerLink="/school">School List</a></li>
-            <li><hr class="dropdown-divider"></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Admission
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Admission Form</a></li>
-            <li><a class="dropdown-item" href="#">Students Portal</a></li>
-            <li><hr class="dropdown-divider"></li>
-          </ul>
-        </li>
+  <div class="menu-bar">
+    <img src="https://gmis.edu.bd/assets/img/logo/logo_long.png" alt="Image" style="height: 200px; width: 100%;">
+  <ul>
+    <li class="active fa fa-home"> <a href="">Home</a></li>
+    <li><a href=""><i class="fa fa-user"></i> About</a></li>
+    <li><a href=""><i class="fa fa-graduation-cap">Academic</i></a>
+    <div class="sub-manu-1">
+      <ul>
+        <li><a href="#">Teacher Portel</a></li>
+        <li><a href="#">Curriculum</a></li>
+        <li><a href="#">Add-School</a></li>
+        <li><a href="#">Show School</a></li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
+    </div></li>
+    <li><a href=""><i class="fa fa-users">Admission</i></a>
+      <div class="sub-manu-1">
+        <ul>
+          <li class="hover-me"><a href="#">Student-Portal</a><i class="fa fa-angle-right"></i>
+            <div class="sub-manu-2">
+              <ul>
+                <li><a href="#" routerLink="/student/create"><h5>Apply Now</h5></a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="#" routerLink="/student/list">Student-List</a></li>
+        </ul>
+      </div>
+    </li>
+    <li><a href=""><i class="fa fa-phone"> Contact</i></a></li>
+  </ul>
   </div>
-</nav>
-
 <router-outlet />
+
+

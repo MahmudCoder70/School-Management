@@ -34,16 +34,15 @@ export class EditStudentComponent {
         .subscribe((data: any) => {
           console.log(data);
 
-          this.fName = data.title;
-          // console.log(this.fName)
-          // this.fName = data.fName;
-          // this.fName = data.fName;
-          // this.fName = data.fName;
-          // this.fName = data.fName;
-          // this.fName = data.fName;
-          // this.fName = data.fName;
-          // this.fName = data.fName;
-          // this.fName = data.fName;
+          this.fName = data.studentFname;
+          this.lName = data.studentLName;
+          this.fatherName = data.fatherName;
+          this.motherName = data.motherName;
+          this.dob = data.dateOfBirth;
+          this.image = data.image;
+          this.birthCert = data.birthCertificateNumber;
+          this.address = data.address;
+          this.gender = data.genderId;
         });
     });
   }
@@ -62,16 +61,17 @@ export class EditStudentComponent {
     const editModel = {
       studentFname: this.fName,
       studentLName: this.lName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
-      // studentFname: this.fName,
+      fatherName: this.fatherName,
+      motherName: this.motherName,
+      dateOfBirth: this.dob,
+      image: this.image,
+      birthCertificateNumber: this.birthCert,
+      address: this.address,
+      genderId: this.gender,
     };
 
     this.http
-      .post('/hfjfjmdjf/' + this.studentId, editModel)
+      .post('http://localhost:5028/api/Students' + this.studentId, editModel)
       .subscribe((data) => {
         console.log(data);
 

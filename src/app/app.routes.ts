@@ -1,15 +1,10 @@
 import { Routes } from '@angular/router';
-import path from 'path';
-import { AppComponent } from './app.component';
-import { ViewComponent } from './components/schooltype/view/view.component';
-import { EditComponent } from './components/schooltype/edit/edit.component';
-import { CreateComponent } from './components/schooltype/create/create.component';
 import { CreateSchoolComponent } from './components/Building/create-school/create-school.component';
 import { ViewSchoolComponent } from './components/Building/view-school/view-school.component';
 import { EditSchoolComponent } from './components/Building/edit-school/edit-school.component';
-import { StudentListComponent } from './components/student-list/student-list.component';
-import { CreateStudentComponent } from './components/create-student/create-student.component';
-import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { StudentListComponent } from './components/Student/student-list/student-list.component';
+import { CreateStudentComponent } from './components/Student/create-student/create-student.component';
+import { EditStudentComponent } from './components/Student/edit-student/edit-student.component';
 
 export const routes: Routes = [
   // {path:"",component:AppComponent},

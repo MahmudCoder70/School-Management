@@ -20,7 +20,7 @@ export class StudentListComponent implements OnInit {
 
   getStudent() {
     this.http
-      .get('https://jsonplaceholder.typicode.com/posts')
+      .get('http://localhost:5028/api/Students')
       .subscribe((data) => {
         this.studentList = data;
 
@@ -29,7 +29,7 @@ export class StudentListComponent implements OnInit {
   }
 
   deleteStudent(id: number | string) {
-    this.http.delete('/dfd/' + id).subscribe(() => {
+    this.http.delete('http://localhost:5028/api/Students/' + id).subscribe(() => {
       this.getStudent();
     });
   }
