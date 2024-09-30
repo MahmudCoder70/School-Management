@@ -49,9 +49,9 @@
       <label for="genderID">Gender:</label>
       <select [(ngModel)]="gender" id="genderID" name="genderID" required>
         <option value="" disabled selected>Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
+        <option value="1">Male</option>
+        <option value="2">Female</option>
+        <option value="3">Other</option>
       </select>
     </div>
     <div class="form-group">
@@ -69,10 +69,9 @@
       <label for="birthCert">Birth Certificate:</label>
       <input
         [(ngModel)]="birthCert"
-        type="file"
+        type="text"
         id="birthCert"
         name="birthCert"
-        accept="application/pdf, image/*"
         required
       />
     </div>
@@ -86,6 +85,6 @@
         required
       />
     </div>
-    <button type="submit" class="submit-btn">Edit Student</button>
+    <button type="submit" class="submit-btn">Save</button>
   </form>
 </div>

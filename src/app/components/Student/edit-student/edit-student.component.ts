@@ -30,12 +30,13 @@ export class EditStudentComponent {
       this.studentId = id;
 
       this.http
-        .get('https://jsonplaceholder.typicode.com/posts/' + id)
+        .get('http://localhost:5028/api/Students/' + id)
         .subscribe((data: any) => {
           console.log(data);
 
-          this.fName = data.studentFname;
+          this.fName = data.studentFName;
           this.lName = data.studentLName;
+          console.log(this.fName,this.lName);
           this.fatherName = data.fatherName;
           this.motherName = data.motherName;
           this.dob = data.dateOfBirth;
@@ -54,28 +55,38 @@ export class EditStudentComponent {
   dob: Date = new Date();
   gender: string = '';
   image: string = '';
+  imagePath: any;
   address: string = '';
   birthCert: string = '';
 
+  updateFile(event: Event){  
+    //@ts-ignore  
+    const file = event.target.files[0];  
+    console.log(file); 
+    this.imagePath=file;                 
+     }
+  
   async editStudent() {
-    const editModel = {
-      studentFname: this.fName,
-      studentLName: this.lName,
-      fatherName: this.fatherName,
-      motherName: this.motherName,
-      dateOfBirth: this.dob,
-      image: this.image,
-      birthCertificateNumber: this.birthCert,
-      address: this.address,
-      genderId: this.gender,
-    };
-
+    let formData: any = new FormData(); 
+      formData.append("studentId",this.studentId)
+      formData.append("studentFname", this.fName)
+      formData.append("studentLName", this.lName)
+      formData.append("fatherName", this.fatherName)
+      formData.append("motherName", this.motherName)
+      formData.append("dateOfBirth", this.dob)
+      formData.append("image", null);
+      formData.append("imagePath", this.imagePath)
+      formData.append("birthCertificateNumber", this.birthCert)
+      formData.append("address", this.address)
+      formData.append("genderId", this.gender)
+    
     this.http
-      .post('http://localhost:5028/api/Students' + this.studentId, editModel)
+      .put('http://localhost:5028/api/Students/' + this.studentId,formData)
       .subscribe((data) => {
         console.log(data);
 
         this.route.navigate(['student/list']);
       });
   }
+
 }

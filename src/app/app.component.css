@@ -1,22 +1,24 @@
-*{
+
+
+* {
     padding: 0;
     margin: 0;
 }
 
-.menu-bar{
+.menu-bar {
     text-align: center;
-    background-color:rgb(17, 105, 9) ;
+    background-color: rgb(17, 105, 9);
     text-align: left;
     width: 100%;
 }
-.menu-bar ul{
 
+.menu-bar ul {
     display: inline-flex;
     list-style: none;
     color: white;
 }
 
-.menu-bar ul li{
+.menu-bar ul li {
     width: 120px;
     margin: 15px;
     padding: 15px;
@@ -26,17 +28,18 @@
     text-decoration: none;
     color: aliceblue;
 }
-.active, .menu-bar ul li a:hover{
+
+.active, .menu-bar ul li a:hover {
     background-color: rgb(98, 168, 32);
     border-radius: 3px;
     padding: 5px;
 }
 
-.sub-manu-1{
+.sub-manu-1 {
     display: none;
 }
 
-.menu-bar ul li:hover .sub-manu-1{
+.menu-bar ul li:hover .sub-manu-1 {
     display: block;
     position: absolute;
     background-color: rgb(0, 100, 0);
@@ -44,12 +47,12 @@
     margin-left: -15px;
 }
 
-.menu-bar ul li:hover .sub-manu-1 ul{
+.menu-bar ul li:hover .sub-manu-1 ul {
     display: block;
     margin: 10px;
 }
 
-.menu-bar ul li:hover .sub-manu-1 ul li{
+.menu-bar ul li:hover .sub-manu-1 ul li {
     width: 150px;
     padding: 10px;
     border-bottom: 1px dotted #fff;
@@ -57,21 +60,24 @@
     border-radius: 0;
     text-align: left;
 }
-.menu-bar ul li:hover .sub-manu-1 ul li:last-child{
+
+.menu-bar ul li:hover .sub-manu-1 ul li:last-child {
     border-bottom: none;
 }
 
-.menu-bar ul li:hover .sub-manu-1 ul li a:hover{
+.menu-bar ul li:hover .sub-manu-1 ul li a:hover {
     color: #164201;
 }
-.fa-angle-right{
+
+.fa-angle-right {
     float: right;
 }
-.sub-manu-2{
 
+.sub-manu-2 {
     display: none;
 }
-.hover-me:hover .sub-manu-2{
+
+.hover-me:hover .sub-manu-2 {
     position: absolute;
     display: block;
     margin-top: -40px;
@@ -79,6 +85,34 @@
     background-color: darkgreen;
 }
 
-h5:hover{
+h5:hover {
     color: chartreuse;
+}
+
+@media (max-width: 768px) {
+    .menu-bar ul {
+        flex-direction: column;
+        width: 100%;
+        display: none; /* Hide menu by default */
+    }
+
+    .menu-bar ul.show {
+        display: flex;
+    }
+
+    .menu-bar .menu-button {
+        display: block;
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-bar .menu-button {
+        display: none;
+    }
 }
