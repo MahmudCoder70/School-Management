@@ -5,6 +5,9 @@ import { EditSchoolComponent } from './components/Building/edit-school/edit-scho
 import { StudentListComponent } from './components/Student/student-list/student-list.component';
 import { CreateStudentComponent } from './components/Student/create-student/create-student.component';
 import { EditStudentComponent } from './components/Student/edit-student/edit-student.component';
+import { ViewTeacherComponent } from './components/Teacher/view-teacher/view-teacher.component';
+import { CreateTeacherComponent } from './components/Teacher/create-teacher/create-teacher.component';
+import { EditTeacherComponent } from './components/Teacher/edit-teacher/edit-teacher.component';
 
 export const routes: Routes = [
   // {path:"",component:AppComponent},
@@ -14,4 +17,7 @@ export const routes: Routes = [
   { path: 'student/list', component: StudentListComponent },
   { path: 'student/create', component: CreateStudentComponent },
   { path: 'student/edit', component: EditStudentComponent },
+  { path: 'viewTeacher', component: ViewTeacherComponent },
+  { path: 'createTeacher', component: CreateTeacherComponent },
+  { path: 'masterdetails-edit/:id', component: EditTeacherComponent },
 ];
