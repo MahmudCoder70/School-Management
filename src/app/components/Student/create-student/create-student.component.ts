@@ -2,7 +2,6 @@ import { formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { File } from 'node:buffer';
 
 
 
@@ -22,32 +21,17 @@ export class CreateStudentComponent {
   motherName: string = '';
   dob: Date = new Date();
   gender: string = '';
-  image: any=File;
-  imagePath: any |ArrayBuffer| null;
+  image: string = '';
+  imagePath: any;
   address: string = '';
   birthCert: string = '';
 
-  // updateFile(event: Event){  
-  //   //@ts-ignore  
-  //   const file = event.target.files[0];  
-  //   console.log(file); 
-  //   this.imagePath=file;                 
-  //    }
-
-  updateFile(event: Event) {
-    const input = event.target as HTMLInputElement;
-
-    if (input.files && input.files[0]) {
-      this.image = input.files[0];
-      const reader = new FileReader();
-      
-      // Once the file is loaded, assign the result to `imagePreview`
-      reader.onload = (e) => {
-        this.imagePath = reader.result;
-      };
-      
-      reader.readAsDataURL(this.image); // Convert file to base64 URL
-    }
+  updateFile(event: Event){  
+    //@ts-ignore  
+    const file = event.target.files[0];  
+    console.log(file); 
+    this.imagePath=file;                 
+     }
 
   async createStudent() {
     console.log(this.fName);
@@ -57,7 +41,7 @@ export class CreateStudentComponent {
       formData.append("fatherName", this.fatherName)
       formData.append("motherName", this.motherName)
       formData.append("dateOfBirth", this.dob)
-      formData.append( "image",this.imagePath)
+      formData.append( "image", null)
       formData.append("imagePath", this.imagePath)
       formData.append("birthCertificateNumber", this.birthCert)
       formData.append("address", this.address)

@@ -4,6 +4,7 @@
     <li class="list-item" *ngFor="let item of studentList">
       <div class="student-info">
         <img src="Images/{{item.image}}"  width="50px"/>
+        <!-- <img *ngIf="item?.image" src="{{item.image}}" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%;"> -->
         <p>{{ item?.studentFName}} {{ item.studentLName}}</p>
         <p>{{ item?.fatherName }}</p>
         <p>{{ item?.motherName }}</p>

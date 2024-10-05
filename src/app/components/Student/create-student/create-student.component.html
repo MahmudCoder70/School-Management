@@ -54,7 +54,7 @@
         <option value="3">Other</option>
       </select>
     </div>
-    <!-- <div class="form-group">
+    <div class="form-group">
       <label for="image">Profile Image:</label>
       <input
         [(ngModel)]="image"
@@ -65,22 +65,6 @@
         accept="image/*"
         required
       />
-    </div> -->
-
-    <div class="form-group">
-      <label for="image">Profile Image:</label>
-      <input
-        (change)="updateFile($event)"
-        type="file"
-        id="image"
-        name="image"
-        accept="image/*"
-        required
-      />
-    </div>
-
-    <div class="form-group" *ngIf="imagePreview">
-      <img [src]="image" alt="Image Preview" width="150" height="150" />
     </div>
     <div class="form-group">
       <label for="birthCert">Birth Certificate:</label>
