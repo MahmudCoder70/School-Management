@@ -8,6 +8,9 @@ import { EditStudentComponent } from './components/Student/edit-student/edit-stu
 import { ViewTeacherComponent } from './components/Teacher/view-teacher/view-teacher.component';
 import { CreateTeacherComponent } from './components/Teacher/create-teacher/create-teacher.component';
 import { EditTeacherComponent } from './components/Teacher/edit-teacher/edit-teacher.component';
+import { ViewGuardianComponent } from './components/Guardian/view-guardian/view-guardian.component';
+import { CreateGuardianComponent } from './components/Guardian/create-guardian/create-guardian.component';
+import { EditGuardianComponent } from './components/Guardian/edit-guardian/edit-guardian.component';
 
 export const routes: Routes = [
   // {path:"",component:AppComponent},
@@ -20,4 +23,7 @@ export const routes: Routes = [
   { path: 'viewTeacher', component: ViewTeacherComponent },
   { path: 'createTeacher', component: CreateTeacherComponent },
   { path: 'masterdetails-edit/:id', component: EditTeacherComponent },
+  { path: 'viewGuardian', component: ViewGuardianComponent },
+  { path: 'createGuardian', component: CreateGuardianComponent },
+  { path: 'edit-Guardian/:id', component: EditGuardianComponent },
 ];
