@@ -9,6 +9,8 @@ import { Teacher } from '../Models/teacher';
 import { StudentGuardian } from '../Models/student-guardian';
 import { Student } from '../Models/student';
 import { Guardian } from '../Models/guardian';
+import { Building } from '../Models/building';
+import { BuildingRoom } from '../Models/building-room';
 
 @Injectable({
   providedIn: 'root',
@@ -106,4 +108,57 @@ export class DataService {
       'http://http://localhost:5028/api/Guardians/' + id
     );
   }
+
+  PostBuilding(data: FormData): Observable<Building> {
+    return this.http.post<Building>(
+      'http://localhost:5028/api/Buildings',
+     data);
+    }
+
+    postBuildingRoom(data: FormData): Observable<BuildingRoom> {
+      return this.http.post<BuildingRoom>(
+        'http://localhost:5028/api/BuildingRooms',
+        data
+    );
+  }
+
+  updatebuildingRoom(data: FormData): Observable<BuildingRoom> {
+    return this.http.put<BuildingRoom>(
+      'http://localhost:5028/api/BuildingRooms/Update',
+      data
+  );
+  }
+
+deleteBuildingRoom(id: number): Observable<BuildingRoom> {
+  return this.http.post<BuildingRoom>(
+    'http://localhost:5028/api/BuildingRooms/Delete/' + id,
+    null
+  );
 }
+
+deleteBuilding(id: number): Observable<Building> {
+  return this.http.delete<Building>(
+    'http://localhost:5028/api/Buildings/Delete' + id,
+    );
+  }
+
+getBuilding(): Observable<Building[]> {
+  return this.http.get<Building[]>(
+    'http://localhost:5028/api/Buildings'
+  );
+}
+
+getBuildingRoom(): Observable<BuildingRoom[]> {
+  return this.http.get<BuildingRoom[]>(
+    'http://localhost:5028/api/BuildingRooms/GetBuildingRoom'
+  );
+  }
+
+getbuildingRoomById(id: number) {
+  return this.http.get<BuildingRoom>(
+    'http://localhost:5028/api/BuildingRooms/' + id
+    );
+  }
+}
+
+
