@@ -74,6 +74,45 @@ export class DataService {
     return this.http.get<Student[]>('http://localhost:5028/api/Students');
   }
 
+  // postStudentGuardian(data: FormData): Observable<StudentGuardian> {
+  //   return this.http.post<StudentGuardian>(
+  //     'http://localhost:5028/api/Guardians',
+  //     data
+  //   );
+  // }
+  // updateStudentGuardian(data: FormData): Observable<StudentGuardian> {
+  //   return this.http.put<StudentGuardian>(
+  //     'http://localhost:5028/api/Guardians/Update',
+  //     data
+  //   );
+  // }
+  // deleteStudentGuardian(id: number): Observable<StudentGuardian> {
+  //   return this.http.post<StudentGuardian>(
+  //     'http://localhost:5028/api/Guardians/Delete/' + id,
+  //     null
+  //   );
+  // }
+
+  // getGuardian(): Observable<Guardian[]> {
+  //   return this.http.get<Guardian[]>(
+  //     'http://http://localhost:5028/api/Guardians/GetGuardian'
+  //   );
+  // }
+  // getStudentGuardian(): Observable<TeacherSubject[]> {
+  //   return this.http.get<StudentGuardian[]>(
+  //     'http://http://localhost:5028/api/Guardians'
+  //   );
+  // }
+  // getStudentGuardianById(id: number) {
+  //   return this.http.get<StudentGuardian>(
+  //     'http://http://localhost:5028/api/Guardians/' + id
+  //   );
+  // }
+
+  // getStudentList(): Observable<Student[]> {
+  //   return this.http.get<Student[]>('http://localhost:5028/api/Students');
+  // }
+
   postStudentGuardian(data: FormData): Observable<StudentGuardian> {
     return this.http.post<StudentGuardian>(
       'http://localhost:5028/api/Guardians',
@@ -95,17 +134,17 @@ export class DataService {
 
   getGuardian(): Observable<Guardian[]> {
     return this.http.get<Guardian[]>(
-      'http://http://localhost:5028/api/Guardians/GetGuardian'
+      'http://localhost:5028/api/Guardians/GetGuardian'
     );
   }
   getStudentGuardian(): Observable<TeacherSubject[]> {
     return this.http.get<StudentGuardian[]>(
-      'http://http://localhost:5028/api/Guardians'
+      'http://localhost:5028/api/Guardians'
     );
   }
   getStudentGuardianById(id: number) {
     return this.http.get<StudentGuardian>(
-      'http://http://localhost:5028/api/Guardians/' + id
+      'http://localhost:5028/api/Guardians/' + id
     );
   }
 
