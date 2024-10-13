@@ -11,6 +11,11 @@ import { Student } from '../Models/student';
 import { Guardian } from '../Models/guardian';
 import { Building } from '../Models/building';
 import { BuildingRoom } from '../Models/building-room';
+import { CampusClass } from '../Models/campus-class';
+import { Campus } from '../Models/campus';
+import { Class } from '../Models/class';
+import { Curriculum } from '../Models/curriculum';
+import { Shift } from '../Models/shift';
 
 @Injectable({
   providedIn: 'root',
@@ -73,45 +78,6 @@ export class DataService {
   getStudentList(): Observable<Student[]> {
     return this.http.get<Student[]>('http://localhost:5028/api/Students');
   }
-
-  // postStudentGuardian(data: FormData): Observable<StudentGuardian> {
-  //   return this.http.post<StudentGuardian>(
-  //     'http://localhost:5028/api/Guardians',
-  //     data
-  //   );
-  // }
-  // updateStudentGuardian(data: FormData): Observable<StudentGuardian> {
-  //   return this.http.put<StudentGuardian>(
-  //     'http://localhost:5028/api/Guardians/Update',
-  //     data
-  //   );
-  // }
-  // deleteStudentGuardian(id: number): Observable<StudentGuardian> {
-  //   return this.http.post<StudentGuardian>(
-  //     'http://localhost:5028/api/Guardians/Delete/' + id,
-  //     null
-  //   );
-  // }
-
-  // getGuardian(): Observable<Guardian[]> {
-  //   return this.http.get<Guardian[]>(
-  //     'http://http://localhost:5028/api/Guardians/GetGuardian'
-  //   );
-  // }
-  // getStudentGuardian(): Observable<TeacherSubject[]> {
-  //   return this.http.get<StudentGuardian[]>(
-  //     'http://http://localhost:5028/api/Guardians'
-  //   );
-  // }
-  // getStudentGuardianById(id: number) {
-  //   return this.http.get<StudentGuardian>(
-  //     'http://http://localhost:5028/api/Guardians/' + id
-  //   );
-  // }
-
-  // getStudentList(): Observable<Student[]> {
-  //   return this.http.get<Student[]>('http://localhost:5028/api/Students');
-  // }
 
   postStudentGuardian(data: FormData): Observable<StudentGuardian> {
     return this.http.post<StudentGuardian>(
@@ -196,6 +162,76 @@ getBuildingRoom(): Observable<BuildingRoom[]> {
 getbuildingRoomById(id: number) {
   return this.http.get<BuildingRoom>(
     'http://localhost:5028/api/BuildingRooms/' + id
+    );
+  }
+  
+  getSubjectById(id: number) {
+    return this.http.get<Subject>('http://localhost:5028/api/Subjects/' + id);
+  }
+  postSubject(data: FormData): Observable<Subject> {
+    return this.http.post<Subject>('http://localhost:5028/api/Subjects', data);
+  }
+  updateSubject(data: FormData): Observable<Subject> {
+    return this.http.put<Subject>(
+      'http://localhost:5028/api/Subjects/Update',
+      data
+    );
+  }
+  deleteSubject(id: number): Observable<Subject> {
+    return this.http.post<Subject>(
+      'http://localhost:5028/api/Subjects/Delete/' + id,
+      null
+    );
+  }
+
+  postcampusClass(data: FormData): Observable<CampusClass> {
+    return this.http.post<CampusClass>(
+      'http://localhost:5028/api/Campus',
+      data
+    );
+  }
+  updatecampusClass(data: FormData): Observable<CampusClass> {
+    return this.http.put<CampusClass>(
+      'http://localhost:5028/api/Campus/Update',
+      data
+    );
+  }
+  deletecampusClass(id: number): Observable<CampusClass> {
+    return this.http.post<CampusClass>(
+      'http://localhost:5028/api/Campus/Delete/' + id,
+      null
+    );
+  }
+
+  getCampus(): Observable<Campus[]> {
+    return this.http.get<Campus[]>(
+      'http://localhost:5028/api/Campus/GetCampus'
+    );
+  }
+  getcampusClass(): Observable<CampusClass[]> {
+    return this.http.get<CampusClass[]>(
+      'http://localhost:5028/api/Campus'
+    );
+  }
+  getcampusClassById(id: number) {
+    return this.http.get<CampusClass>(
+      'http://localhost:5028/api/Campus/' + id
+    );
+  }
+
+  getClass(): Observable<Class[]> {
+    return this.http.get<Class[]>(
+      'http://localhost:5028/api/Classes'
+    );
+  }
+  getCurriculum(): Observable<Curriculum[]> {
+    return this.http.get<Curriculum[]>(
+      'http://localhost:5028/api/Curriculams/GetCurriculum'
+    );
+  }
+  getShift(): Observable<Shift[]> {
+    return this.http.get<Shift[]>(
+      'http://localhost:5028/api/Shifts'
     );
   }
 }

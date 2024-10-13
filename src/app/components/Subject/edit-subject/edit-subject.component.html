@@ -1,0 +1,58 @@
+<div class="wrapper container">
+    <form [formGroup]="subjectForm" (ngSubmit)="updateSubject()">
+      <div class="row">
+        <div class="col-6">
+          <h2 class="display-5">Update Subject Data</h2>
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="subjectName"
+              >Subject Name</label
+            >
+            <div class="col-8">
+              <input
+                type="text"
+                formControlName="subjectName"
+                class="form-control form-control-sm"
+              />
+            </div>
+          </div>
+          
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="classId">Class</label>
+            <div class="col-8">
+              <select
+                formControlName="classId"
+                class="form-select form-select-sm"
+              >
+                <option value="" disabled selected>--Select Class--</option>
+                <option *ngFor="let p of class" value="{{ p.classId }}">
+                  {{ p.className }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="curriculumId">Class</label>
+            <div class="col-8">
+              <select
+                formControlName="curriculumId"
+                class="form-select form-select-sm"
+              >
+                <option value="" disabled selected>--Select Class--</option>
+                <option *ngFor="let p of curriculum" value="{{ p.curriculumId }}">
+                  {{ p.curriculumName }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-8 offset-4">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  

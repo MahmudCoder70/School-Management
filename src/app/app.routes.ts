@@ -18,6 +18,12 @@ import { CreateBuildingRoomComponent } from './components/BuildingRoom/create-bu
 import { ViewShiftComponent } from './components/Shift/view-shift/view-shift.component';
 import { CreateShiftComponent } from './components/Shift/create-shift/create-shift.component';
 import { EditShiftComponent } from './components/Shift/edit-shift/edit-shift.component';
+import { ViewSubjectComponent } from './components/Subject/view-subject/view-subject.component';
+import { CreateSubjectComponent } from './components/Subject/create-subject/create-subject.component';
+import { EditSubjectComponent } from './components/Subject/edit-subject/edit-subject.component';
+import { CreateCampusComponent } from './components/campus/create-campus/create-campus.component';
+import { ViewCampusComponent } from './components/campus/view-campus/view-campus.component';
+import { EditCampusComponent } from './components/campus/edit-campus/edit-campus.component';
 
 export const routes: Routes = [
   // {path:"",component:AppComponent},
@@ -42,4 +48,10 @@ export const routes: Routes = [
   { path: 'shift/list', component: ViewShiftComponent },
   { path: 'shift/create', component: CreateShiftComponent },
   { path: 'shift/edit', component: EditShiftComponent},
+  { path: 'viewSubject', component: ViewSubjectComponent },
+  { path: 'createSubject', component: CreateSubjectComponent },
+  { path: 'edit-subject/:id', component: EditSubjectComponent },
+  { path: 'createcampus', component: CreateCampusComponent},
+  { path: 'getcampus', component: ViewCampusComponent},
+  { path: 'edit-campus/: id', component: EditCampusComponent},
 ];
