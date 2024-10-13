@@ -2,8 +2,8 @@
   <form [formGroup]="teacherForm" (ngSubmit)="insertTeacher()">
     <div class="row">
       <div class="col-6">
-        <h3 style="color: blue; text-align: center; margin-bottom: 40px">
-          Add Teacher Details
+        <h3 style="text-align: center; margin-bottom: 40px;">
+          Teacher Details
         </h3>
         <div class="row mb-2">
           <label class="col-form-label col-4" for="teacherName"
@@ -86,19 +86,15 @@
           </div>
         </div>
 
-        <div class="row mb-2">
-          <div class="col-8 offset-4">
-            <button type="submit" class="btn btn-primary">Save</button>
-          </div>
-        </div>
+        
       </div>
       <div class="col-6">
-        <h3 style="color: blue; margin-left: 80px">Select Subject</h3>
+        <h3 style=" margin-left: 80px">Select Subject</h3>
         <div class="d-flex justify-content-end">
           <button
             type="button"
             (click)="addSub()"
-            class="btn btn-outline-primary btn-sm"
+            class="btn btn-info btn-sm"
           >
             +
           </button>
@@ -115,7 +111,7 @@
                     <option disabled value="null" selected>
                       ----Select----
                     </option>
-                    <option
+                    <option style="color:deeppink;"
                       *ngFor="let item of subjectList"
                       value="{{ item.subjectId }}"
                     >
@@ -134,7 +130,12 @@
               </div>
             </div>
           </ng-container>
-        </ng-container>
+        </ng-container> 
+      </div>     
+    </div>
+    <div class="row mb-2">
+      <div class="col-8 offset-2">
+        <button type="submit" class="btn btn-primary" style="width: 120%;">Save</button>
       </div>
     </div>
   </form>

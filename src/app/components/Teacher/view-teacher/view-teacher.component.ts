@@ -6,6 +6,8 @@ import { TeacherSubject } from '../../../Models/teacher-subject';
 import { CommonModule } from '@angular/common';
 import { Gender } from '../../../Models/gender';
 import { NotifyComponent } from '../../notify/notify.component';
+import { NotifyServiceService } from '../../../Services/notify.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-view-teacher',
@@ -18,11 +20,12 @@ export class ViewTeacherComponent {
   subjectList: Subject[] = [];
   teacherList: TeacherSubject[] = [];
   gender: Gender[] = [];
-  notifySvc: any;
-  dialog: any;
+  
   constructor(
     public dataSvc: DataService,
-    private router: Router
+    private router: Router,
+    private notifySvc: NotifyServiceService,
+    private dialog: MatDialog
   ) {}
   ngOnInit() {
     this.dataSvc.getSubjectList().subscribe((result) => {
@@ -57,6 +60,7 @@ export class ViewTeacherComponent {
         if (r)
           this.dataSvc.deleteTeacherSubject(Number(item.teacherId)).subscribe(
             (x) => {
+              this.router.navigate(['/viewTeacher'])
               this.notifySvc.success('Data Deleted successfully!!', 'DISMISS');
             },
             (err) => {
