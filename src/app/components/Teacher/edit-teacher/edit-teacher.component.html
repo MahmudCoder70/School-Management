@@ -2,7 +2,7 @@
   <form [formGroup]="teacherForm" (ngSubmit)="updateTeacher()">
     <div class="row">
       <div class="col-6">
-        <h2 class="display-5">Update Teacher Data</h2>
+        <h2 class="mb-4" style="margin-left: 40%;">Update Data</h2>
         <div class="row mb-2">
           <label class="col-form-label col-4" for="teacherName"
             >Teacher Name</label
@@ -84,14 +84,10 @@
           </div>
         </div>
 
-        <div class="row mb-2">
-          <div class="col-8 offset-4">
-            <button type="submit" class="btn btn-primary">Update</button>
-          </div>
-        </div>
+        
       </div>
       <div class="col-6">
-        <h2>Select Skills</h2>
+        <h2 style="margin-left: 30%;">Update Subjects</h2>
         <div class="d-flex justify-content-end">
           <button
             type="button"
@@ -113,7 +109,7 @@
                     <option disabled value="null" selected>
                       ----Select----
                     </option>
-                    <option
+                    <option style="color:deeppink;"
                       *ngFor="let item of subjectList"
                       value="{{ item.subjectId }}"
                     >
@@ -133,6 +129,11 @@
             </div>
           </ng-container>
         </ng-container>
+      </div>
+      <div class="row mb-2">
+        <div class="col-8 offset-2">
+          <button type="submit" class="btn btn-primary" style="width: 50%;">Update</button>
+        </div>
       </div>
     </div>
   </form>
