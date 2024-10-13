@@ -11,6 +11,9 @@ import { EditTeacherComponent } from './components/Teacher/edit-teacher/edit-tea
 import { ViewGuardianComponent } from './components/Guardian/view-guardian/view-guardian.component';
 import { CreateGuardianComponent } from './components/Guardian/create-guardian/create-guardian.component';
 import { EditGuardianComponent } from './components/Guardian/edit-guardian/edit-guardian.component';
+import { ViewSectionComponent } from './components/section/view-section/view-section.component';
+import { CreateSectionComponent } from './components/section/create-section/create-section.component';
+import { EditSectionComponent } from './components/section/edit-section/edit-section.component';
 
 export const routes: Routes = [
   // {path:"",component:AppComponent},
@@ -26,4 +29,7 @@ export const routes: Routes = [
   { path: 'viewGuardian', component: ViewGuardianComponent },
   { path: 'createGuardian', component: CreateGuardianComponent },
   { path: 'edit-Guardian/:id', component: EditGuardianComponent },
+  { path: 'section/View', component: ViewSectionComponent },
+  { path: 'section/create', component: CreateSectionComponent },
+  { path: 'section/edit', component: EditSectionComponent},
 ];
