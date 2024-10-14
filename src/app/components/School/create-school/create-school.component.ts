@@ -35,12 +35,6 @@ export class CreateSchoolComponent {
       buildingName:""
     };
   }
-  // AddSchoolBuilding(){
-  //   this.school.buildings=[...this.school.buildings, ...this.tempSchool];
-  //   this.http.post('http://localhost:5028/api/Schools', this.school).subscribe((res:any) => {
-  //     this.route.navigateByUrl('/');
-  //   });
-  // }
   edit(p : any){
     this.Buildings={...p};
     this.del(p);

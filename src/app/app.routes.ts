@@ -27,7 +27,7 @@ import { EditCampusComponent } from './components/campus/edit-campus/edit-campus
 
 export const routes: Routes = [
   // {path:"",component:AppComponent},
-  { path: 'school', component: ViewSchoolComponent },
+  { path: 'school/view', component: ViewSchoolComponent },
   { path: 'school/edit/ : id', component: EditSchoolComponent },
   { path: 'school/create', component: CreateSchoolComponent },
   { path: 'student/list', component: StudentListComponent },
