@@ -1,0 +1,21 @@
+<div class="section-form-container">
+  <h1>Create Section</h1>
+  <form class="section-form" (ngSubmit)="editSection()">
+    <div class="form-group">
+      <label for="sectionName">Section Name:</label>
+      <input
+        [(ngModel)]="sectionName"
+        type="text"
+        id="sectionName"
+        name="sectionName"
+        required
+      />
+    </div>
+    
+   
+   
+    
+    
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+  </div>

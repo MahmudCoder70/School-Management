@@ -1,0 +1,29 @@
+<div class="section-list">
+    <h1> Section Info</h1>
+    <div class="d-flex justify-content-end me-4">
+    <button type="button" name="add" routerLink="/section/create" class="btn btn-outline-primary">ADD</button>
+  </div>
+    <ul class="list">
+      <li class="list-item" *ngFor="let item of sectionList">
+        <div class="section-info">
+          <!-- <p>{{ item?.image}}</p> -->
+         
+          <p>{{ item?.sectionName}} </p>
+         
+          <button
+            class="btn btn-primary"
+            style="margin-right: 5px"
+            (click)="deleteSection(item.sectionId)">
+            Delete
+          </button>
+  
+          <button class="btn btn-primary" (click)="editSection(item.sectionId)">
+            Edit
+          </button>
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+  
+ 
