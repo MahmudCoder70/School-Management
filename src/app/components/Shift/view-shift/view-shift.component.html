@@ -1,0 +1,26 @@
+<div class="shift-list">
+  <h1> Shift Info</h1>
+  <ul class="list">
+    <li class="list-item" *ngFor="let item of shiftList">
+      <div class="shift-info">
+        <!-- <p>{{ item?.image}}</p> -->
+       
+        <p>{{ item?.shiftName}} </p>
+        <p>{{ item?.startTime }}</p>
+        <p>{{ item?.endTime }}</p>
+       
+        <button
+          class="btn btn-primary"
+          style="margin-right: 5px"
+          (click)="deleteShift(item.shiftId)">
+          Delete
+        </button>
+
+        <button class="btn btn-primary" (click)="editShift(item.shiftId)">
+          Edit
+        </button>
+      </div>
+    </li>
+  </ul>
+  
+</div>

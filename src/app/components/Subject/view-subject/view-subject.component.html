@@ -1,0 +1,42 @@
+<div class="row no-gutter border p-2">
+  <div class="col">
+    <div class="d-flex justify-content-between">
+      <h3 style="text-align: center; color: crimson">Subject Info</h3>
+      <div class="d-flex justify-content-end mb-4">
+        <button
+          type="button"
+          [routerLink]="['/createSubject']"
+          class="btn btn-outline-primary btn-sm me-2"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+    <div *ngFor="let item of subject" class="card mb-4">
+      <div class="card-header">
+        <div class="col-10">
+          <div class="d-flex justify-content-end">
+            <button
+              [routerLink]="['/edit-subject', item.subjectId]"
+              class="btn btn-outline-success btn-sm"
+            >
+              Edit
+            </button>
+            &nbsp;
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="confirmDelete(item)"
+            >
+              delete
+            </button>
+          </div>
+
+          <b>Name: </b> {{ item.subjectName }} <br />
+          <b>Class</b> {{ getClassName(item.classId) }} <br />
+          <b>Curriculum</b>
+          {{ getCurriculumName(item.curriculumId) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

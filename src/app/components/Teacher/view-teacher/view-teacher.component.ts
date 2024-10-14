@@ -4,10 +4,10 @@ import { Router, RouterLink } from '@angular/router';
 import { Subject } from '../../../Models/subject';
 import { TeacherSubject } from '../../../Models/teacher-subject';
 import { CommonModule } from '@angular/common';
+import { Gender } from '../../../Models/gender';
+import { NotifyComponent } from '../../notify/notify.component';
 import { NotifyServiceService } from '../../../Services/notify.service';
 import { MatDialog } from '@angular/material/dialog';
-import { NotifyComponent } from '../../notify/notify.component';
-import { Gender } from '../../../Models/gender';
 
 @Component({
   selector: 'app-view-teacher',
@@ -20,6 +20,7 @@ export class ViewTeacherComponent {
   subjectList: Subject[] = [];
   teacherList: TeacherSubject[] = [];
   gender: Gender[] = [];
+  
   constructor(
     public dataSvc: DataService,
     private router: Router,
@@ -55,10 +56,11 @@ export class ViewTeacherComponent {
         width: '450px',
       })
       .afterClosed()
-      .subscribe((r) => {
+      .subscribe((r:any) => {
         if (r)
           this.dataSvc.deleteTeacherSubject(Number(item.teacherId)).subscribe(
             (x) => {
+              this.router.navigate(['/viewTeacher'])
               this.notifySvc.success('Data Deleted successfully!!', 'DISMISS');
             },
             (err) => {

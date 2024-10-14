@@ -3,14 +3,15 @@
   <ul class="list">
     <li class="list-item" *ngFor="let item of studentList">
       <div class="student-info">
-        <img src="Images/{{item.image}}"  width="50px"/>
-        <p>{{ item?.studentFName}} {{ item.studentLName}}</p>
-        <p>{{ item?.fatherName }}</p>
-        <p>{{ item?.motherName }}</p>
-        <p>{{ item?.dateOfBirth }}</p>
-        <p>{{ item?.birthCertificateNumber }}</p>
-        <p>{{ item?.address }}</p>
-        <p>{{ item?.genderId ===1?"Male":item?.genderId ===2?"Female":"Others"}}</p>
+
+        <img src="http://localhost:5028/Images/{{item.image}}"  width="150px" height="150px"/>
+        <p><strong style="color: black;">Student Name :</strong> {{ item?.studentFName}} {{ item.studentLName}}</p>
+        <p><strong>Father Name  :</strong> {{ item?.fatherName }}</p>
+        <p><strong>Mother Name  :</strong> {{ item?.motherName }}</p>
+        <p><strong>DOB          :</strong> {{ item?.dateOfBirth }}</p>
+        <p><strong>B.C Number   :</strong> {{ item?.birthCertificateNumber }}</p>
+        <p><strong>Address      :</strong> {{ item?.address }}</p>
+        <p><strong>Gender       :</strong> {{ item?.genderId ===1?"Male":item?.genderId ===2?"Female":"Others"}}</p>
         <button
           class="btn btn-primary"
           style="margin-right: 5px"

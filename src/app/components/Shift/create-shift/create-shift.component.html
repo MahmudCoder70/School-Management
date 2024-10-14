@@ -1,0 +1,42 @@
+<div class="shift-form-container">
+    <h1>Create Shift</h1>
+    <form class="shift-form" (ngSubmit)="createShift()">
+      <div class="form-group">
+        <label for="shiftName">Shift Name:</label>
+        <input
+          [(ngModel)]="shiftName"
+          type="text"
+          id="shiftName"
+          name="shiftName"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="startTime">Start Time :</label>
+        <input
+          [(ngModel)]="startTime"
+          type="time"
+          id="startTime"
+          name="startTime"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="endTime">End Name:</label>
+        <input
+          [(ngModel)]="endTime"
+          type="time"
+          id="endTime"
+          name="endTime"
+          required
+        />
+      </div>
+      
+     
+     
+      
+      
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+  

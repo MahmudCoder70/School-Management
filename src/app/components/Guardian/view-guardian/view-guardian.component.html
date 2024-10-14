@@ -1,1 +1,58 @@
-<p>view-guardian works!</p>
+
+<div class="container mt-5">
+    <div class="row no-gutter border p-4 justify-content-center">
+      <div class="col-md-10">
+        <div class="text-center mb-4">
+          <h1 style="color: crimson; font-weight: bold;">Guardian Information</h1>
+          <button
+            type="button"
+            [routerLink]="['/createGuardian']"
+            class="btn btn-outline-primary btn-lg d-flex justify-content-end"
+          >
+            Add Guardian
+          </button>
+        </div>
+        <div *ngFor="let item of guardianList" class="card mb-4 shadow">
+          <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <b>Name: </b> {{ item.guardianName }} |
+                <b> Phone No: </b> {{ item.phone }}<br />
+                <b>Email: </b> {{ item.email }} |
+                <b> NID No: </b> {{ item.nidNumber }}
+              </div>
+              <div>
+                <button
+                  [routerLink]="['/edit-Guardian', item.guardianId]"
+                  class="btn btn-outline-success btn-sm"
+                >
+                  Edit
+                </button>
+                <button
+                  class="btn btn-outline-danger btn-sm ms-2"
+                  (click)="confirmDelete(item)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of item.studentsList">
+                  <td># &nbsp;{{ getStudName(p.studentId) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

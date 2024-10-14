@@ -1,0 +1,21 @@
+.shift-form-container {
+    margin-top: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .student-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }

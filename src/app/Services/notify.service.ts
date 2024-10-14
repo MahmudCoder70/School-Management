@@ -24,6 +24,6 @@ export class NotifyServiceService {
       horizontalPosition: 'right',
       verticalPosition: 'top',
     };
-    this.snackBar.open(message, action, config);
-  }
+    this.snackBar.open(message, action,config);
+}
 }

@@ -35,7 +35,6 @@ export class StudentListComponent implements OnInit {
     });
   }
 
-
   editStudent(id: number) {
     this.route.navigate(['student/edit'], { queryParams: { id: id } });
   }
