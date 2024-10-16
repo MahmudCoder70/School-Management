@@ -1,16 +1,19 @@
 .student-form-container {
+  max-width: 100%;
   margin-top: 10px;
-  max-width: 600px;
-  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   background-color: #fff;
   padding: 20px;
+  border: 5px solid lightsteelblue;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   text-align: center;
-  color: #333;
+  color: #9cac10;
   margin-bottom: 20px;
 }
 
@@ -24,13 +27,14 @@ h1 {
 
 .form-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .form-group label {
   margin-bottom: 5px;
   font-weight: bold;
   color: #555;
+  width: 20%;
 }
 
 .form-group input,
@@ -39,6 +43,7 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  width: 75%;
 }
 
 input[type="file"] {
@@ -48,12 +53,15 @@ input[type="file"] {
 .submit-btn {
   padding: 12px;
   font-size: 18px;
+  margin-top: 20px;
+  margin-left: 255px;
   background-color: #00796b;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 75%;
 }
 
 .submit-btn:hover {

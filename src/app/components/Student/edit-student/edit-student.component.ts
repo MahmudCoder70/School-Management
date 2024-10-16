@@ -13,10 +13,58 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditStudentComponent {
   route = inject(Router);
+  selectedCampusId: string = '';
+  selectedClassId: string = '';
+  selectedSectionId: string = '';
+
+  campuses: { campusId: string, name: string }[] = [];
+  classes: { classId: string, className: string }[] = [];
+  sections: { sectionId: string, sectionName: string }[] = [];
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient
-  ) {}
+  ) {
+    this.fetchCampuses();  
+    this.fetchClasses();    
+    this.fetchSections();
+  }
+
+  fetchCampuses() {
+    this.http.get<{ campusId: string, name: string }[]>('http://localhost:5028/api/Campus').subscribe({
+      next: (data) => {
+        this.campuses = data;
+      },
+      error: (err) => {
+        console.error('Error fetching campuses:', err);
+      }
+    });
+  }
+
+  // Method to fetch classes
+  fetchClasses() {
+    this.http.get<{ classId: string, className: string }[]>('http://localhost:5028/api/Classes').subscribe({
+      next: (data) => {
+        console.log(data)
+        this.classes = data;
+      },
+      error: (err) => {
+        console.error('Error fetching classes:', err);
+      }
+    });
+  }
+
+  // Method to fetch sections
+  fetchSections() {
+    this.http.get<{ sectionId: string, sectionName: string }[]>('http://localhost:5028/api/Sections/GetSections').subscribe({
+      next: (data) => {
+        console.log(data)
+        this.sections = data;
+      },
+      error: (err) => {
+        console.error('Error fetching sections:', err);
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.getStudent();
@@ -45,6 +93,9 @@ export class EditStudentComponent {
           this.birthCert = data.birthCertificateNumber;
           this.address = data.address;
           this.gender = data.genderId;
+          this.campuses=data.campusId;
+          this.classes=data.classId;
+          this.sections=data.sectionId;
         });
     });
   }
@@ -59,6 +110,9 @@ export class EditStudentComponent {
   imagePath: any;
   address: string = '';
   birthCert: string = '';
+  name:string='';
+  className: string='';
+  campusName:string='';
 
   updateFile(event: Event){  
     //@ts-ignore  
@@ -80,6 +134,9 @@ export class EditStudentComponent {
       formData.append("birthCertificateNumber", this.birthCert)
       formData.append("address", this.address)
       formData.append("genderId", this.gender)
+      formData.append('campusId', this.selectedCampusId)
+      formData.append('classId', this.selectedClassId)
+      formData.append('sectionId', this.selectedSectionId)
     
     this.http
       .put('http://localhost:5028/api/Students/' + this.studentId,formData)

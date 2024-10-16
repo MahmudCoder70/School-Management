@@ -1,19 +1,25 @@
 <div class="student-list">
+  <hr>
   <h1>All Student Informations</h1>
+  <hr>
+
   <ul class="list">
     <li class="list-item" *ngFor="let item of studentList">
       <div class="student-info">
 
-        <img src="http://localhost:5028/Images/{{item.image}}"  width="150px" height="150px"/>
+        <img src="http://localhost:5028/Images/{{item.image}}"  width="100px" height="100px"/>
         <p><strong style="color: black;">Student Name :</strong> {{ item?.studentFName}} {{ item.studentLName}}</p>
         <p><strong>Father Name  :</strong> {{ item?.fatherName }}</p>
         <p><strong>Mother Name  :</strong> {{ item?.motherName }}</p>
         <p><strong>DOB          :</strong> {{ item?.dateOfBirth }}</p>
         <p><strong>B.C Number   :</strong> {{ item?.birthCertificateNumber }}</p>
         <p><strong>Address      :</strong> {{ item?.address }}</p>
+        <p><strong>Campus :</strong> {{ item?.name }}</p>
+        <p><strong>Class :</strong> {{ item?.className }}</p>
+        <p><strong>Section :</strong> {{ item?.sectionName }}</p>
         <p><strong>Gender       :</strong> {{ item?.genderId ===1?"Male":item?.genderId ===2?"Female":"Others"}}</p>
         <button
-          class="btn btn-primary"
+          class="btn btn-danger"
           style="margin-right: 5px"
           (click)="deleteStudent(item.studentId)">
           Delete

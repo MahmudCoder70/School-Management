@@ -1,5 +1,6 @@
 <div class="student-form-container">
-  <h1>Create Student</h1>
+  <h1 style="color: darkgoldenrod;">Add Student Information</h1>
+  <hr>
   <form class="student-form" (ngSubmit)="createStudent()" enctype="multipart/form-data">
     <div class="form-group">
       <label for="firstName">First Name:</label>
@@ -93,6 +94,26 @@
         required
       />
     </div>
-    <button type="submit" class="submit-btn" >Submit</button>
+    <div class="form-group">
+    <label for="campus">Select Campus</label>
+  <select id="campus" [(ngModel)]="selectedCampusId" name="campusId">
+    <option *ngFor="let campus of campuses" [value]="campus.campusId">{{ campus.name }}</option>
+  </select>
+    </div>
+  <!-- Class selection -->
+   <div class="form-group">
+    <label for="class">Select Class</label>
+    <select id="class" [(ngModel)]="selectedClassId" name="classId">
+      <option *ngFor="let class of classes" [value]="class.classId">{{ class.className }}</option>
+    </select>
+   </div>
+   <div class="form-group">
+  <!-- Section selection -->
+  <label for="section">Select Section</label>
+  <select id="section" [(ngModel)]="selectedSectionId" name="sectionId">
+    <option *ngFor="let section of sections" [value]="section.sectionId">{{ section.sectionName }}</option>
+  </select>
+</div>
+    <button type="submit" class="submit-btn mt-4" >Submit</button>
   </form>
 </div>

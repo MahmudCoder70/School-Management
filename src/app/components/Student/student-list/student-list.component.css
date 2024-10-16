@@ -1,9 +1,10 @@
 
 .student-list {
-  max-width: 600px;
+  max-width: 95%;
   margin: 0 auto;
   background-color: #fff;
   padding: 20px;
+  margin-top: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
@@ -11,7 +12,7 @@
 
 h1 {
   text-align: center;
-  color: #333;
+  color: #9dac17;
   margin-bottom: 20px;
 }
 

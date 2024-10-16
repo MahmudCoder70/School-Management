@@ -12,7 +12,57 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-student.component.css'],
 })
 export class CreateStudentComponent {
-  constructor(private http: HttpClient, private router: Router) {}
+
+  selectedCampusId: string = '';
+  selectedClassId: string = '';
+  selectedSectionId: string = '';
+
+  campuses: { campusId: string, name: string }[] = [];
+  classes: { classId: string, className: string }[] = [];
+  sections: { sectionId: string, sectionName: string }[] = [];
+  constructor(private http: HttpClient, private router: Router) {
+
+    this.fetchCampuses();  
+    this.fetchClasses();    
+    this.fetchSections();
+  }
+
+  fetchCampuses() {
+    this.http.get<{ campusId: string, name: string }[]>('http://localhost:5028/api/Campus').subscribe({
+      next: (data) => {
+        this.campuses = data;
+      },
+      error: (err) => {
+        console.error('Error fetching campuses:', err);
+      }
+    });
+  }
+
+  // Method to fetch classes
+  fetchClasses() {
+    this.http.get<{ classId: string, className: string }[]>('http://localhost:5028/api/Classes').subscribe({
+      next: (data) => {
+        console.log(data)
+        this.classes = data;
+      },
+      error: (err) => {
+        console.error('Error fetching classes:', err);
+      }
+    });
+  }
+
+  // Method to fetch sections
+  fetchSections() {
+    this.http.get<{ sectionId: string, sectionName: string }[]>('http://localhost:5028/api/Sections/GetSections').subscribe({
+      next: (data) => {
+        console.log(data)
+        this.sections = data;
+      },
+      error: (err) => {
+        console.error('Error fetching sections:', err);
+      }
+    });
+  }
 
   fName: string = '';
   lName: string = '';
@@ -24,6 +74,9 @@ export class CreateStudentComponent {
   imagePath: string | ArrayBuffer | null = null;  // Image preview
   address: string = '';
   birthCert: string = '';
+  name:string='';
+  className: string='';
+  campusName:string='';
 
   // Method to handle file selection and preview
   updateFile(event: Event) {
@@ -57,7 +110,7 @@ export class CreateStudentComponent {
     formData.append('fatherName', this.fatherName);
     formData.append('motherName', this.motherName);
     formData.append('dateOfBirth', this.dob);
-  
+    
     // Ensure the image is appended only if selected
     if (this.image) {
       formData.append('imagePath', this.image);  // Append file with key matching the backend (ImagePath)
@@ -68,7 +121,11 @@ export class CreateStudentComponent {
     formData.append('birthCertificateNumber', this.birthCert);
     formData.append('address', this.address);
     formData.append('genderId', this.gender);
+    formData.append('campusId', this.selectedCampusId);
+    formData.append('classId', this.selectedClassId);
+    formData.append('sectionId', this.selectedSectionId);
   
+    console.log(this.selectedCampusId,this.selectedClassId)
     // Make POST request with FormData
     this.http.post('http://localhost:5028/api/Students', formData).subscribe({
       next: (data) => {

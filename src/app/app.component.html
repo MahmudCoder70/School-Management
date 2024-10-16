@@ -1,10 +1,10 @@
-<div class="menu-bar">
-  <button class="menu-button" onclick="toggleMenu()">☰</button>
-  <img
+<img
     src="https://gmis.edu.bd/assets/img/logo/logo_long.png"
     alt="Image"
-    style="height: 200px; width: 100%"
-  />
+    style="height: 200px; width: 80%"/>
+<div class="menu-bar">
+  <button class="menu-button" onclick="toggleMenu()">☰</button>
+  
   <ul>
     <li class="active fa fa-home"><a href="">Home</a></li>
     <li>
@@ -14,7 +14,7 @@
       <a href=""><i class="fa fa-graduation-cap">Academic</i></a>
       <div class="sub-manu-1">
         <ul>
-          <li class="hover-me"><a href="#">School</a>
+          <!-- <li class="hover-me"><a href="#">School</a>
             <div class="sub-manu-2">
               <ul>
                 <li>
@@ -23,7 +23,7 @@
                 <li><a href="#" routerLink="/school/view">School-List</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
           <li><a routerLink="/viewTeacher" href="#">Teacher Portel</a></li>
           <li><a routerLink="/viewGuardian" href="#">Guardians</a></li>
           <li><a routerLink="/getcampus" href="#">Campus List</a></li>
@@ -40,7 +40,7 @@
             <div class="sub-manu-2">
               <ul>
                 <li>
-                  <a href="#" routerLink="/student/create" >Add Student</a >                  
+                  <a href="#" [routerLink]="['/student/create']" >Add Student</a >                  
                 </li>
                 <li><a href="#" routerLink="/student/list">Student-List</a></li>
               </ul>
