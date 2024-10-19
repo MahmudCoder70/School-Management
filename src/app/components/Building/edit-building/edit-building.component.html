@@ -1,0 +1,46 @@
+<div class="wrapper container">
+    <form [formGroup]="buildingForm" (ngSubmit)="updateBuilding()">
+      <div class="row">
+        <div class="col-6">
+          <h2 class="display-5">Update Building Data</h2>
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="buildingName"
+              >Building Name</label
+            >
+            <div class="col-8">
+              <input
+                type="text"
+                formControlName="buildingName"
+                class="form-control form-control-sm"
+              />
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="schoolId">School</label>
+            <div class="col-8">
+              <select
+                formControlName="schoolId"
+                class="form-select form-select-sm"
+              >
+                <option value="" disabled selected>--Select School--</option>
+                <option *ngFor="let p of school" value="{{ p.schoolId }}">
+                  {{ p.schoolName }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-8 offset-4">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+     
+          </div>
+   
+ 
+    </form>
+  </div>
+  

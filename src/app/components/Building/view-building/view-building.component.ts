@@ -40,6 +40,7 @@ export class ViewBuildingComponent {
 
   }
 
+
   getSchoolName(id: any) {
     let data = this.school.find((x) => x.schoolId == id);
     return data ? data.schoolName : '';
