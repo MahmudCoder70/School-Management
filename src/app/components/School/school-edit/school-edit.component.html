@@ -1,0 +1,74 @@
+
+<div class="wrapper container">
+    <form [formGroup]="schoolForm" (ngSubmit)="editSchool()">
+      <div class="row">
+        <div class="col-6">
+          <h3 style="color: blue; text-align: center; margin-bottom: 40px">
+            Edit School Details
+          </h3>
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="schoolName"
+              >School Name</label>
+            <div class="col-8">
+              <input
+                type="text"
+                formControlName="schoolName"
+                class="form-control form-control-sm"/>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="schoolLocation"
+              >School Location</label>
+            <div class="col-8">
+              <input
+                type="text"
+                formControlName="schoolLocation"
+                class="form-control form-control-sm"/>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="email"
+              >Email</label>
+            <div class="col-8">
+              <input
+                type="text"
+                formControlName="email"
+                class="form-control form-control-sm"/>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="establishedYear"
+              >Established Year</label>
+            <div class="col-8">
+              <input
+                type="datetime"
+                formControlName="establishedYear"
+                class="form-control form-control-sm"/>
+            </div>
+          </div>
+              
+  
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="schoolTypeId">SchoolType</label>
+            <div class="col-8">
+              <select
+                formControlName="schoolTypeId"
+                class="form-select form-select-sm"
+              >
+                <option value="" disabled selected>--Select SchoolType--</option>
+                <option *ngFor="let p of schoolType" value="{{ p.schoolTypeId }}">
+                  {{ p.schoolTypeName }}
+                </option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="row mb-2">
+            <div class="col-8 offset-4">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

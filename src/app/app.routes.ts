@@ -24,9 +24,12 @@ import { EditSubjectComponent } from './components/Subject/edit-subject/edit-sub
 import { CreateCampusComponent } from './components/campus/create-campus/create-campus.component';
 import { ViewCampusComponent } from './components/campus/view-campus/view-campus.component';
 import { EditCampusComponent } from './components/campus/edit-campus/edit-campus.component';
+import { SchoolViewComponent } from './components/School/school-view/school-view.component';
+import { SchoolCreateComponent } from './components/School/school-create/school-create.component';
+import { SchoolEditComponent } from './components/School/school-edit/school-edit.component';
 
 
-export const routes: Routes = [
+export const routes : Routes= [
   // {path:"",component:AppComponent},
   
   { path: 'student/list', component: StudentListComponent },
@@ -56,4 +59,7 @@ export const routes: Routes = [
   { path: 'createcampus', component: CreateCampusComponent},
   { path: 'getcampus', component: ViewCampusComponent},
   { path: 'edit-campus/: id', component: EditCampusComponent},
+  { path: 'schoolView', component: SchoolViewComponent },
+  { path: 'schoolsCreate', component: SchoolCreateComponent },
+  { path: 'schools-edit/:id', component: SchoolEditComponent },
 ];

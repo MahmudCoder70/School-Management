@@ -16,6 +16,7 @@ import { Campus } from '../Models/campus';
 import { Class } from '../Models/class';
 import { Curriculum } from '../Models/curriculum';
 import { Shift } from '../Models/shift';
+import { SchoolType } from '../Models/school-type';
 
 @Injectable({
   providedIn: 'root',
@@ -25,13 +26,13 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  getSchools(): Observable<School[]> {
-    return this.http.get<School[]>(this.baseUrl);
-  }
+  // getSchools(): Observable<School[]> {
+  //   return this.http.get<School[]>(this.baseUrl);
+  // }
 
-  addSchool(school: School): Observable<School> {
-    return this.http.post<School>(this.baseUrl, school);
-  }
+  // addSchool(school: School): Observable<School> {
+  //   return this.http.post<School>(this.baseUrl, school);
+  // }
   getSubjectList(): Observable<Subject[]> {
     return this.http.get<Subject[]>(
       'http://localhost:5028/api/Teachers/GetSubject'
@@ -232,6 +233,34 @@ getbuildingRoomById(id: number) {
   getShift(): Observable<Shift[]> {
     return this.http.get<Shift[]>(
       'http://localhost:5028/api/Shifts'
+    );
+  }
+
+  // School 
+
+ 
+  getAllSchoolTypes(): Observable<SchoolType[]> {
+    return this.http.get<SchoolType[]>('http://localhost:5028/api/SchoolTypes');
+  }
+  getSchools(): Observable<any[]> {
+      return this.http.get<any[]>('http://localhost:5028/api/Schools');
+      } 
+  getSchoolbyId(id: number) {
+    return this.http.get<School>('http://localhost:5028/api/Schools/' + id);
+  }
+  createSchool(data: FormData): Observable<School> {
+    return this.http.post<School>('http://localhost:5028/api/Schools',data);
+  }
+  updateSchool(data: FormData): Observable<School> {
+    return this.http.put<School>(
+      'http://localhost:5028/api/Schools/Update',
+      data
+    );
+  }
+  deleteSchool(id: number): Observable<School> {
+    return this.http.post<School>(
+      'http://localhost:5028/api/Schools/' + id,
+      null
     );
   }
 }
