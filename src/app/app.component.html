@@ -1,10 +1,11 @@
 <img
-    src="https://gmis.edu.bd/assets/img/logo/logo_long.png"
-    alt="Image"
-    style="height: 200px; width: 80%"/>
+  src="https://gmis.edu.bd/assets/img/logo/logo_long.png"
+  alt="Image"
+  style="height: 50%; width: 100%"
+/>
 <div class="menu-bar">
   <button class="menu-button" onclick="toggleMenu()">☰</button>
-  
+
   <ul>
     <li class="active fa fa-home"><a href="">Home</a></li>
     <li>
@@ -28,7 +29,7 @@
           <li><a routerLink="/viewGuardian" href="#">Guardians</a></li>
           <li><a routerLink="/getcampus" href="#">Campus List</a></li>
           <li><a routerLink="/viewSubject" href="#">Subjects</a></li>
-          <li><a routerLink="schoolView" href="#">Show-School</a></li> 
+          <li><a routerLink="schoolView" href="#">Show-School</a></li>
         </ul>
       </div>
     </li>
@@ -41,7 +42,7 @@
             <div class="sub-manu-2">
               <ul>
                 <li>
-                  <a href="#" [routerLink]="['/student/create']" >Add Student</a >                  
+                  <a href="#" [routerLink]="['/student/create']">Add Student</a>
                 </li>
                 <li><a href="#" routerLink="/student/list">Student-List</a></li>
               </ul>
@@ -50,7 +51,9 @@
 
           <li><a href="#" routerLink="/section/View">Section List</a></li>
           <li><a href="#" routerLink="/viewBuilding">Building-List</a></li>
-          <li><a href="#" routerLink="/viewBuildingRoom">BuildingRoom-List</a></li>
+          <li>
+            <a href="#" routerLink="/viewBuildingRoom">BuildingRoom-List</a>
+          </li>
           <li><a href="#" routerLink="/shift/list">Shift-List</a></li>
         </ul>
       </div>

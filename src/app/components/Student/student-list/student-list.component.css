@@ -1,69 +1,174 @@
-
 .student-list {
-  max-width: 95%;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 20px;
-  margin-top: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
+  width: 80%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
 }
 
 h1 {
   text-align: center;
-  color: #9dac17;
+  color: #333;
   margin-bottom: 20px;
 }
 
-p strong{
-  color: black;
-}
-
-p{
-  cursor: pointer;
-}
-
 .list {
-  list-style-type: none;
-  
+  list-style: none;
+  padding: 0;
 }
 
 .list-item {
-  padding: 20px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
   background-color: #f9f9f9;
-  margin-bottom: 15px;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+  display: flex;
+  align-items: center;
 }
 
-.list-item:hover {
-  background-color: #e0f7fa;
-}
-
-.student-info h2 {
-  color: #00796b;
-  margin-bottom: 5px;
+.student-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
 }
 
 .student-info p {
-  color: #555;
-  margin: 3px 0;
+  margin: 5px 0;
 }
 
-img{
-  border-radius: 10px;
+img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Button Styling */
+button {
+  padding: 6px 12px;
+  border: none;
   cursor: pointer;
+  font-size: 14px;
+  margin-right: 5px;
+  border-radius: 4px;
 }
 
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #e53935;
+}
+
+.btn-primary {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .student-list {
-    padding: 15px;
+    width: 95%;
   }
 
   .list-item {
-    padding: 15px;
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  img {
+    margin-bottom: 10px;
+  }
+
+  .student-info {
+    margin-left: 0;
+  }
+}
+
+
+.student-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.list-item {
+  margin-bottom: 20px;
+}
+
+.student-card {
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+}
+
+.student-header {
+  background-color: #0056d2;
+  padding: 20px;
+}
+
+.student-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+}
+
+.student-body {
+  padding: 20px;
+}
+
+.student-body h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.student-body .student-title {
+  font-size: 14px;
+  color: #777;
+}
+
+.student-body p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.action-buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #0056d2;
+  color: white;
+  border-radius: 20px;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 20px;
 }
