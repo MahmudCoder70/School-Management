@@ -27,11 +27,12 @@ import { EditCampusComponent } from './components/campus/edit-campus/edit-campus
 import { SchoolViewComponent } from './components/School/school-view/school-view.component';
 import { SchoolCreateComponent } from './components/School/school-create/school-create.component';
 import { SchoolEditComponent } from './components/School/school-edit/school-edit.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 export const routes : Routes= [
   // {path:"",component:AppComponent},
-  
+  { path: 'home', component: HomeComponent },
   { path: 'student/list', component: StudentListComponent },
   { path: 'student/create', component: CreateStudentComponent },
   { path: 'student/edit', component: EditStudentComponent },
