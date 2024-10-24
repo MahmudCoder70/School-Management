@@ -92,6 +92,7 @@ export class ViewCampusComponent {
           this.dataSvc.deletecampusClass(Number(item.campusId)).subscribe(
             (x) => {
               this.notifySvc.success('Data Deleted successfully!!', 'DISMISS');
+              
             },
             (err) => {
               this.notifySvc.fail('Data Delete failed!!', 'DISMISS');

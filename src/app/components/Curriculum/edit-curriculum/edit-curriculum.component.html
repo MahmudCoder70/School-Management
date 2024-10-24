@@ -1,0 +1,43 @@
+<div class="wrapper container">
+    <form [formGroup]="curriculumForm" (ngSubmit)="updateCurriculum()">
+      <div class="row">
+        <div class="col-6">
+          <h2 class="display-5">Update Curriculum Data</h2>
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="curriculumName"
+              >Curriculum Name</label
+            >
+            <div class="col-8">
+              <input
+                type="text"
+                formControlName="curriculumName"
+                class="form-control form-control-sm"
+              />
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <label class="col-form-label col-4" for="description"
+              >Description</label
+            >
+            <div class="col-8">
+              <input
+                type="text"
+                formControlName="description"
+                class="form-control form-control-sm"
+              />
+            </div>
+          </div>
+          
+          
+
+          <div class="row mb-2">
+            <div class="col-8 offset-4">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  

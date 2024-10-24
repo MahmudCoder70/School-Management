@@ -26,21 +26,62 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  // getSchools(): Observable<School[]> {
-  //   return this.http.get<School[]>(this.baseUrl);
-  // }
+       //gender
+  getGender(): Observable<Gender[]> {
+    return this.http.get<Gender[]>('http://localhost:5028/api/Genders');
+  }
 
-  // addSchool(school: School): Observable<School> {
-  //   return this.http.post<School>(this.baseUrl, school);
-  // }
+
+        //school
+  addSchool(school: School): Observable<School> {
+    return this.http.post<School>(this.baseUrl, school);
+  }
+  getSchools(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:5028/api/Schools');
+    } 
+getSchoolbyId(id: number) {
+  return this.http.get<School>('http://localhost:5028/api/Schools/' + id);
+}
+createSchool(data: FormData): Observable<School> {
+  return this.http.post<School>('http://localhost:5028/api/Schools',data);
+}
+updateSchool(data: FormData): Observable<School> {
+  return this.http.put<School>(
+    'http://localhost:5028/api/Schools/Update',
+    data
+  );
+}
+deleteSchool(id: number): Observable<School> {
+  return this.http.post<School>(
+    'http://localhost:5028/api/Schools/' + id,
+    null
+  );
+}
+        //subject
   getSubjectList(): Observable<Subject[]> {
     return this.http.get<Subject[]>(
       'http://localhost:5028/api/Teachers/GetSubject'
     );
   }
-  getGender(): Observable<Gender[]> {
-    return this.http.get<Gender[]>('http://localhost:5028/api/Genders');
+  getSubjectById(id: number) {
+    return this.http.get<Subject>('http://localhost:5028/api/Subjects/' + id);
   }
+  postSubject(data: FormData): Observable<Subject> {
+    return this.http.post<Subject>('http://localhost:5028/api/Subjects', data);
+  }
+  updateSubject(data: FormData): Observable<Subject> {
+    return this.http.put<Subject>(
+      'http://localhost:5028/api/Subjects/Update',
+      data
+    );
+  }
+  deleteSubject(id: number): Observable<Subject> {
+    return this.http.post<Subject>(
+      'http://localhost:5028/api/Subjects/Delete/' + id,
+      null
+    );
+  }
+        //teacher
   postTeacherSubject(data: FormData): Observable<TeacherSubject> {
     return this.http.post<TeacherSubject>(
       'http://localhost:5028/api/Teachers',
@@ -75,11 +116,11 @@ export class DataService {
       'http://localhost:5028/api/Teachers/' + id
     );
   }
-
+        //student
   getStudentList(): Observable<Student[]> {
     return this.http.get<Student[]>('http://localhost:5028/api/Students');
   }
-
+        //guardian
   postStudentGuardian(data: FormData): Observable<StudentGuardian> {
     return this.http.post<StudentGuardian>(
       'http://localhost:5028/api/Guardians',
@@ -114,76 +155,47 @@ export class DataService {
       'http://localhost:5028/api/Guardians/' + id
     );
   }
-
-  PostBuilding(data: FormData): Observable<Building> {
-    return this.http.post<Building>(
-      'http://localhost:5028/api/Buildings',
-     data);
-    }
-
-    postBuildingRoom(data: FormData): Observable<BuildingRoom> {
-      return this.http.post<BuildingRoom>(
-        'http://localhost:5028/api/BuildingRooms',
-        data
-    );
+        //class
+  getClassList(): Observable<Class[]> {
+    return this.http.get<Class[]>('http://localhost:5028/api/Classes');
   }
-
-  updatebuildingRoom(data: FormData): Observable<BuildingRoom> {
-    return this.http.put<BuildingRoom>(
-      'http://localhost:5028/api/BuildingRooms/Update',
-      data
-  );
-  }
-
-deleteBuildingRoom(id: number): Observable<BuildingRoom> {
-  return this.http.post<BuildingRoom>(
-    'http://localhost:5028/api/BuildingRooms/Delete/' + id,
-    null
-  );
-}
-
-deleteBuilding(id: number): Observable<Building> {
-  return this.http.delete<Building>(
-    'http://localhost:5028/api/Buildings/Delete' + id,
-    );
-  }
-
-getBuilding(): Observable<Building[]> {
-  return this.http.get<Building[]>(
-    'http://localhost:5028/api/Buildings'
-  );
-}
-
-getBuildingRoom(): Observable<BuildingRoom[]> {
-  return this.http.get<BuildingRoom[]>(
-    'http://localhost:5028/api/BuildingRooms/GetBuildingRoom'
-  );
-  }
-
-getbuildingRoomById(id: number) {
-  return this.http.get<BuildingRoom>(
-    'http://localhost:5028/api/BuildingRooms/' + id
+  getClass(): Observable<Class[]> {
+    return this.http.get<Class[]>(
+      'http://localhost:5028/api/Classes'
     );
   }
   
-  getSubjectById(id: number) {
-    return this.http.get<Subject>('http://localhost:5028/api/Subjects/' + id);
+        //curriculum
+  getCurriculumList(): Observable<Curriculum[]> {
+    return this.http.get<Curriculum[]>(
+      'http://localhost:5028/api/Curriculams/GetCurriculum'
+    );
   }
-  postSubject(data: FormData): Observable<Subject> {
-    return this.http.post<Subject>('http://localhost:5028/api/Subjects', data);
+  getCurriculum(): Observable<Curriculum[]> {
+    return this.http.get<Curriculum[]>(
+      'http://localhost:5028/api/Curriculams/GetCurriculum'
+    );
   }
-  updateSubject(data: FormData): Observable<Subject> {
-    return this.http.put<Subject>(
-      'http://localhost:5028/api/Subjects/Update',
+  getCurriculumById(id: number) {
+    return this.http.get<Curriculum>('http://localhost:5028/api/Curriculams/' + id);
+  }
+  postCurriculum(data: FormData): Observable<Curriculum> {
+    return this.http.post<Curriculum>('http://localhost:5028/api/Curriculams', data);
+  }
+  updateCurriculum(data: FormData): Observable<Curriculum> {
+    return this.http.put<Curriculum>(
+      'http://localhost:5028/api/Curriculams/Update',
       data
     );
   }
-  deleteSubject(id: number): Observable<Subject> {
-    return this.http.post<Subject>(
-      'http://localhost:5028/api/Subjects/Delete/' + id,
+  deleteCurriculum(id: number): Observable<Curriculum> {
+    return this.http.post<Curriculum>(
+      'http://localhost:5028/api/Curriculams/Delete/' + id,
       null
     );
   }
+
+        //campus
 
   postcampusClass(data: FormData): Observable<CampusClass> {
     return this.http.post<CampusClass>(
@@ -220,49 +232,105 @@ getbuildingRoomById(id: number) {
     );
   }
 
-  getClass(): Observable<Class[]> {
-    return this.http.get<Class[]>(
-      'http://localhost:5028/api/Classes'
-    );
-  }
-  getCurriculum(): Observable<Curriculum[]> {
-    return this.http.get<Curriculum[]>(
-      'http://localhost:5028/api/Curriculams/GetCurriculum'
-    );
-  }
+        //shift
   getShift(): Observable<Shift[]> {
     return this.http.get<Shift[]>(
       'http://localhost:5028/api/Shifts'
     );
   }
-
-  // School 
-
- 
-  getAllSchoolTypes(): Observable<SchoolType[]> {
-    return this.http.get<SchoolType[]>('http://localhost:5028/api/SchoolTypes');
+  getShiftList(): Observable<Shift[]> {
+    return this.http.get<Shift[]>(
+      'http://localhost:5028/api/Shifts/GetShifts'
+    );
   }
-  getSchools(): Observable<any[]> {
-      return this.http.get<any[]>('http://localhost:5028/api/Schools');
-      } 
-  getSchoolbyId(id: number) {
-    return this.http.get<School>('http://localhost:5028/api/Schools/' + id);
+  getShiftById(id: number) {
+    return this.http.get<Shift>('http://localhost:5028/api/Shifts/' + id);
   }
-  createSchool(data: FormData): Observable<School> {
-    return this.http.post<School>('http://localhost:5028/api/Schools',data);
+  postShift(data: FormData): Observable<Shift> {
+    return this.http.post<Shift>('http://localhost:5028/api/Shifts', data);
   }
-  updateSchool(data: FormData): Observable<School> {
-    return this.http.put<School>(
-      'http://localhost:5028/api/Schools/Update',
+  updateShift(data: FormData): Observable<Shift> {
+    return this.http.put<Shift>(
+      'http://localhost:5028/api/Shifts/Update',
       data
     );
   }
-  deleteSchool(id: number): Observable<School> {
-    return this.http.post<School>(
-      'http://localhost:5028/api/Schools/' + id,
+  deleteShift(id: number): Observable<Shift> {
+    return this.http.post<Shift>(
+      'http://localhost:5028/api/Shifts/Delete/' + id,
       null
     );
   }
+
+
+        //schooltypes
+  getAllSchoolTypes(): Observable<SchoolType[]> {
+    return this.http.get<SchoolType[]>('http://localhost:5028/api/SchoolTypes');
+  }
+  
+
+  
+        //building
+  
+  getBuilding(): Observable<Building[]> {
+    return this.http.get<Building[]>(
+      'http://localhost:5028/api/Buildings'
+    );
+  }
+
+  getBuildingById(id: number) {
+    return this.http.get<Building>('http://localhost:5028/api/Buildings/' + id);
+  }
+
+
+  PostBuilding(data: FormData): Observable<Building> {
+    return this.http.post<Building>('http://localhost:5028/api/Buildings', data);
+  }
+
+  updateBuilding(data: FormData): Observable<Building> {
+    return this.http.put<Building>(
+      'http://localhost:5028/api/Buildings/Update',
+      data
+    );
+  }
+
+
+  deleteBuilding(id: number): Observable<Building> {
+    return this.http.post<Building>(
+      'http://localhost:5028/api/Buildings/Delete/' + id,
+      null
+    );
+  }
+
+        //buildingroom
+    getBuildingRoom(): Observable<BuildingRoom[]> {
+      return this.http.get<BuildingRoom[]>(
+      'http://localhost:5028/api/BuildingRooms/GetBuildingRoom'
+      );
+    }
+
+    getbuildingRoomById(id: number) {
+      return this.http.get<BuildingRoom>('http://localhost:5028/api/BuildingRooms/' + id);
+    }
+
+
+    postBuildingRoom(data: FormData): Observable<BuildingRoom> {
+      return this.http.post<BuildingRoom>('http://localhost:5028/api/BuildingRooms', data);
+    }
+
+    editBuildingRoom(data: FormData): Observable<BuildingRoom> {
+      return this.http.put<BuildingRoom>(
+        'http://localhost:5028/api/BuildingRooms/Update',
+        data
+      );
+    }
+
+    deleteBuildingRoom(id: number): Observable<BuildingRoom> {
+    return this.http.post<BuildingRoom>(
+    'http://localhost:5028/api/BuildingRooms/Delete/' + id,
+    null
+  );
+}
 }
 
 

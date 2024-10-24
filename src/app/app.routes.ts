@@ -28,6 +28,12 @@ import { SchoolViewComponent } from './components/School/school-view/school-view
 import { SchoolCreateComponent } from './components/School/school-create/school-create.component';
 import { SchoolEditComponent } from './components/School/school-edit/school-edit.component';
 import { HomeComponent } from './components/home/home.component';
+import { ViewCurriculumComponent } from './components/Curriculum/view-curriculum/view-curriculum.component';
+import { CreateCurriculumComponent } from './components/Curriculum/create-curriculum/create-curriculum.component';
+import { EditCurriculumComponent } from './components/Curriculum/edit-curriculum/edit-curriculum.component';
+import { ViewComponent } from './components/schooltype/view/view.component';
+import { CreateComponent } from './components/schooltype/create/create.component';
+import { EditComponent } from './components/schooltype/edit/edit.component';
 
 
 export const routes : Routes= [
@@ -63,4 +69,10 @@ export const routes : Routes= [
   { path: 'schoolView', component: SchoolViewComponent },
   { path: 'schoolsCreate', component: SchoolCreateComponent },
   { path: 'schools-edit/:id', component: SchoolEditComponent },
+  { path: 'viewCurriculum', component: ViewCurriculumComponent },
+  { path: 'createCurriculum', component: CreateCurriculumComponent },
+  { path: 'edit-curriculum/:id', component: EditCurriculumComponent },
+  { path: 'schooltype', component:ViewComponent },
+  { path: 'schooltype/create', component: CreateComponent },
+  { path: 'schooltype/edit', component: EditComponent},
 ];
