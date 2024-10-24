@@ -17,7 +17,7 @@
         <div class="col-10">
           <div class="d-flex justify-content-end">
             <button
-              [routerLink]="['/editBuilding', item.buildingId]"
+              [routerLink]="['/building-edit', item.buildingId]"
               class="btn btn-outline-success btn-sm"
             >
               Edit
@@ -33,7 +33,7 @@
           <br />
           <b> Building Name: </b> {{ item.buildingName }} | 
           |
-            <b>School</b> {{(item?.schoolId)}}
+            <b>School</b> {{getSchoolName(item?.schoolId)}}
 
         </div>
       </div>

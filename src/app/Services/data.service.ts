@@ -240,7 +240,7 @@ deleteSchool(id: number): Observable<School> {
   }
   getShiftList(): Observable<Shift[]> {
     return this.http.get<Shift[]>(
-      'http://localhost:5028/api/Shifts/GetShifts'
+      'http://localhost:5028/api/Shifts'
     );
   }
   getShiftById(id: number) {
@@ -305,7 +305,7 @@ deleteSchool(id: number): Observable<School> {
         //buildingroom
     getBuildingRoom(): Observable<BuildingRoom[]> {
       return this.http.get<BuildingRoom[]>(
-      'http://localhost:5028/api/BuildingRooms/GetBuildingRoom'
+      'http://localhost:5028/api/BuildingRooms'
       );
     }
 

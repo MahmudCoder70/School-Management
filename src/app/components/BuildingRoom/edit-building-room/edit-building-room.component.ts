@@ -72,7 +72,7 @@ export class EditBuildingRoomComponent {
     this.dataSvc.editBuildingRoom(formData).subscribe({
       next: (r) => {
         console.log(r);
-        this.router.navigate(['/viewbuildingRoom']);
+        this.router.navigate(['/viewBuildingRoom']);
         this.notifySvc.success('Data update successfully!!', 'DISMISS');
       },
       error: (err) => {
