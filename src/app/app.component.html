@@ -3,71 +3,143 @@
   alt="Image"
   style="height: 50%; width: 100%"
 />
-<div class="menu-bar">
-  <button class="menu-button" onclick="toggleMenu()">☰</button>
+<div class="body">
+  <header class="header">
+    <div class="menu-bar">
+      <button class="menu-button" onclick="toggleMenu()">☰</button>
 
-  <ul>
-    <li class="active fa fa-home" routerLink="home"><a href="">Home</a></li>
-    <!-- <li>
-      <a href=""><i class="fa fa-user"></i> About</a>
-    </li> -->
-    <li>
-      <a href=""><i class="fa fa-graduation-cap">Academic</i></a>
-      <div class="sub-manu-1">
-        <ul>
-          <!-- <li class="hover-me"><a href="#">School</a>
-            <div class="sub-manu-2">
-              <ul>
-                <li>
-                  <a href="#" routerLink="/school/create" >Add School</a >
-                </li>
-                <li><a href="#" routerLink="/school/view">School-List</a></li>
-              </ul>
-            </div>
-          </li> -->
-          <li><a routerLink="/viewTeacher" href="#">Teacher Portel</a></li>
-          <li><a routerLink="/viewGuardian" href="#">Guardians</a></li>
-          <li><a routerLink="/getcampus" href="#">Campus List</a></li>
-          <li><a routerLink="/viewSubject" href="#">Subjects</a></li>
-          <li><a routerLink="schoolView" href="#">Show-School</a></li>
-        </ul>
-      </div>
-    </li>
-    <li>
-      <a href=""><i class="fa fa-users">Admission</i></a>
-      <div class="sub-manu-1">
-        <ul>
-          <li class="hover-me">
-            <a href="#">Student-Portal</a><i class="fa fa-angle-right"></i>
-            <div class="sub-manu-2">
-              <ul>
-                <li>
-                  <a href="#" [routerLink]="['/student/create']">Add Student</a>
-                </li>
-                <li><a href="#" routerLink="/student/list">Student-List</a></li>
-              </ul>
-            </div>
-          </li>
+      <ul>
+        <li class="active fa fa-home" routerLink="home"><a href="">Home</a></li>
 
-          <li><a href="#" routerLink="/section/View">Section</a></li>
-          <li><a href="#" routerLink="/viewBuilding">Building</a></li>
-          <li>
-            <a href="#" routerLink="/viewBuildingRoom">Room</a>
-          </li>
-          <li><a href="#" routerLink="/shift/list">Shift </a></li>
-        </ul>
+        <li>
+          <a href=""><i class="fa fa-graduation-cap">Academic</i></a>
+          <div class="sub-manu-1">
+            <ul>
+              <li><a routerLink="/viewTeacher" href="#">Teacher Portel</a></li>
+              <li><a routerLink="/viewGuardian" href="#">Guardians</a></li>
+              <li><a routerLink="/getcampus" href="#">Campus List</a></li>
+              <li><a routerLink="/viewSubject" href="#">Subjects</a></li>
+              <li><a routerLink="schoolView" href="#">Show-School</a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href=""><i class="fa fa-users">Admission</i></a>
+          <div class="sub-manu-1">
+            <ul>
+              <li class="hover-me">
+                <a href="#">Student-Portal</a><i class="fa fa-angle-right"></i>
+                <div class="sub-manu-2">
+                  <ul>
+                    <li>
+                      <a href="#" [routerLink]="['/student/create']"
+                        >Add Student</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" routerLink="/student/list">Student-List</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li><a href="#" routerLink="/section/View">Section</a></li>
+              <li><a href="#" routerLink="/viewBuilding">Building</a></li>
+              <li>
+                <a href="#" routerLink="/viewBuildingRoom">Room</a>
+              </li>
+              <li><a href="#" routerLink="/shift/list">Shift </a></li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href=""><i class="fa fa-phone"> Contact</i></a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <h1 style="text-align: center; color: green; margin: 20px">
+    Welcome to Greenmind School
+  </h1>
+  <div class="content-body">
+    <div class="box">
+      <h1 style="color: darkgoldenrod">Chairman !</h1>
+      <p>
+        At <b style="color: green">Greenmind International School</b>, our core
+        belief is that education shapes not just minds, but futures. As the
+        chairman, my vision has always been to create an environment where every
+        child is encouraged to dream, explore, and grow into confident,
+        compassionate individuals. We emphasize a well-rounded approach,
+        combining academic excellence with extracurricular activities that
+        foster creativity and teamwork. Our dedicated teachers are the backbone
+        of this mission, guiding students with care and inspiring them to
+        achieve their best. Education at our school is not just about preparing
+        for exams, but about preparing for life. We focus on developing critical
+        thinking, empathy, and a sense of responsibility towards society. This,
+        I believe, is the true purpose of education. Together, let’s continue to
+        inspire and build a brighter future for every child at [School Name].
+        Thank you for your trust and support.
+      </p>
+    </div>
+
+    <div class="box">
+      <h1 style="color: darkgoldenrod">Head Teacher !</h1>
+      <p>
+        At <b style="color: green">Greenmind International School</b>, our
+        mission is to provide a nurturing environment where every student feels
+        valued and inspired to learn. As the head teacher, I believe education
+        is about more than academics—it’s about developing confident, curious,
+        and kind individuals. Our teachers work closely with each student to
+        help them discover their strengths and grow holistically. We focus on
+        building not just knowledge, but essential values like respect,
+        resilience, and responsibility. Together, we aim to create a supportive
+        community that empowers every child to reach their full potential.
+      </p>
+    </div>
+  </div>
+  <div class="content-body">
+    <div class="photo">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNAyp0NZhRT7adakRrohJbjmaQuVkcIS97e2MF1v1jMGZ98ENuGYEh-y9-vNqJsrad5bc&usqp=CAU"
+        alt=""
+      />
+    </div>
+    <div class="photo">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5NHdah2GPD1psegb8-3yXsz9BUQub9K976N_pNwZHg5mkocgQ7Xyxi62SfzOgQyfg6JA&usqp=CAU"
+        alt="noPhoto"
+        style="width: 290px; margin-top: 30px"
+      />
+    </div>
+    <div class="photo">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgcGLjDxvt5fqJSDddginWU2oTmdpGden5FBNx1Y4w41Wc7HnomKl4-6SBs7datOi7xCU&usqp=CAU"
+        alt=""
+        style="width: 290px; margin-top: 30px"
+      />
+      <p style="margin-top: 30px; text-align: justify">
+        <strong>A</strong>t Greenmind School, a vibrant community thrives on
+        holistic education and personal growth. Teachers use innovative methods
+        to engage students, fostering open communication and personalized
+        support. This collaborative environment nurtures strong relationships
+        and a lifelong love for learning.
+      </p>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <!-- Footer -->
+  <!-- <footer class="footer">
+    <div class="footer-content">
+      <div class="social-media">
+        <a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
       </div>
-    </li>
-    <li>
-      <a href=""><i class="fa fa-phone"> Contact</i></a>
-    </li>
-  </ul>
-</div>
-<div class="photo">
-  <img
-    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjHRQZz5TREKQvIB8V28iMrmtYp2VFy3hVPw&s"
-    alt=""
-    style="width: 100%; height: 50%; display: inline-block"
-  />
+      <div class="copyright">
+        &copy; 2024 Greenmind International School. All Rights Reserved.
+      </div>
+    </div>
+  </footer> -->
 </div>
 <router-outlet />

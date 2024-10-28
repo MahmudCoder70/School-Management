@@ -1,23 +1,52 @@
+*{
+  padding: 0;
+  margin: 0;
+}
 .student-form-container {
-  width: 50%;
-  margin: 0 auto;
+  width: 70%;
+  margin-left: 250px;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  border: 2px solid rgb(61, 36, 36);
+  border-radius: 7px;
 }
 
 .form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 8px;
+  width: 25%;
+  margin-left: 10px;
+  font-weight: bold;
 }
 
+.form-group select,input:hover{
+  color: azure;
+  
+}
+
+h2{
+  text-align: center;
+  color:darkgreen;
+  margin: 25px;
+}
 .form-group input,
 .form-group select {
-  width: 100%;
-  padding: 8px;
+  
+  width: 80%;
+  margin-right: 20px;
   box-sizing: border-box;
+  padding: 10px;
 }
+
+
 
 button {
   padding: 10px 15px;
@@ -25,10 +54,15 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-left: 200px;
+  border-radius: 5px;
 }
 
 button:hover {
   background-color: #0056b3;
+  
 }
 
 img {
