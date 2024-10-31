@@ -108,7 +108,6 @@ h5:hover {
 }
 
 
-
 .content-body{
    float: left;
    width: 38%;
@@ -147,17 +146,6 @@ font-size: 40px;
 font-weight: normal;
 }
 
-
-.content-section{
-  display: none;
-}
-.content-section:target{
-  display: block;
-}
-
-.content-section:first-of-type{
-  display: block;
-}
 
 @media (max-width: 768px) {
   .menu-bar ul {
