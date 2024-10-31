@@ -1,23 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-student',
+  selector: 'app-edit-student',
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './edit-student.component.html',
   styleUrls: ['./edit-student.component.css'],
 })
-export class EditStudentComponent {
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private http: HttpClient,
-    private router: Router
-  ) {}
-  studentId: any;
+export class EditStudentComponent implements OnInit {
+  selectedCampusId: string = '';
+  selectedClassId: string = '';
+  selectedSectionId: string = '';
 
   campuses: { campusId: string; name: string }[] = [];
   classes: { classId: string; className: string }[] = [];
@@ -34,53 +31,85 @@ export class EditStudentComponent {
   address: string = '';
   birthCert: string = '';
 
-  selectedCampusId: string = '';
-  selectedClassId: string = '';
-  selectedSectionId: string = '';
+  studentId: string | null = null;
 
-  studentdata: any;
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.activatedRoute.queryParamMap.subscribe((params) => {
-      this.studentId = params.get('id');
+    this.studentId = this.route.snapshot.queryParams['id'];
+    if (this.studentId) {
+      this.fetchStudentById(this.studentId);
+    }
+    this.fetchCampuses();
+    this.fetchClasses();
+    this.fetchSections();
+  }
 
-      this.http
-        .get('http://localhost:5028/api/Students/' + this.studentId)
-        .subscribe((data) => {
-          this.studentdata = data;
-
-          console.log(this.studentdata);
-          this.fName = this.studentdata.studentFName;
-          this.lName = this.studentdata.studentLName;
-
-          this.fatherName = this.studentdata.fatherName;
-          this.motherName = this.studentdata.motherName;
-          this.dob = this.studentdata.dateOfBirth;
-
-          this.gender = this.studentdata.genderId;
-          this.image = this.studentdata.image;
-          // this.imagePath = this.studentdata.address;
-          this.address = this.studentdata.address;
-          this.birthCert = this.studentdata.birthCertificateNumber;
-          this.selectedCampusId = this.studentdata.address;
-
-          this.selectedClassId = this.studentdata.address;
-          this.selectedSectionId = this.studentdata.address;
-        });
+  fetchStudentById(id: string) {
+    this.http.get<any>(`http://localhost:5028/api/Students/${id}`).subscribe({
+      next: (student) => {
+        this.fName = student.fName;
+        this.lName = student.lName;
+        this.fatherName = student.fatherName;
+        this.motherName = student.motherName;
+        this.dob = student.dateOfBirth;
+        this.gender = student.genderId;
+        this.selectedCampusId = student.campusId;
+        this.selectedClassId = student.classId;
+        this.selectedSectionId = student.sectionId;
+        this.birthCert = student.birthCertificateNumber;
+        this.address = student.address;
+        this.imagePath = student.imagePath; // Load image preview if available
+      },
+      error: (err) => {
+        console.error('Error fetching student data:', err);
+      },
     });
+  }
+
+  fetchCampuses() {
+    this.http
+      .get<{ campusId: string; name: string }[]>(
+        'http://localhost:5028/api/Campus'
+      )
+      .subscribe({
+        next: (data) => (this.campuses = data),
+        error: (err) => console.error('Error fetching campuses:', err),
+      });
+  }
+
+  fetchClasses() {
+    this.http
+      .get<{ classId: string; className: string }[]>(
+        'http://localhost:5028/api/Classes'
+      )
+      .subscribe({
+        next: (data) => (this.classes = data),
+        error: (err) => console.error('Error fetching classes:', err),
+      });
+  }
+
+  fetchSections() {
+    this.http
+      .get<{ sectionId: string; sectionName: string }[]>(
+        'http://localhost:5028/api/Sections/GetSections'
+      )
+      .subscribe({
+        next: (data) => (this.sections = data),
+        error: (err) => console.error('Error fetching sections:', err),
+      });
   }
 
   updateFile(event: Event) {
     const input = event.target as HTMLInputElement;
-
     if (input.files && input.files[0]) {
       this.image = input.files[0];
       const reader = new FileReader();
-
-      reader.onload = () => {
-        this.imagePath = reader.result;
-      };
-
+      reader.onload = () => (this.imagePath = reader.result);
       reader.readAsDataURL(this.image);
     } else {
       this.image = null;
@@ -88,16 +117,14 @@ export class EditStudentComponent {
     }
   }
 
-  editStudent() {
+  updateStudent() {
     const formData = new FormData();
     formData.append('studentFName', this.fName);
     formData.append('studentLName', this.lName);
     formData.append('fatherName', this.fatherName);
     formData.append('motherName', this.motherName);
     formData.append('dateOfBirth', this.dob);
-    if (this.image) {
-      formData.append('imagePath', this.image);
-    }
+    if (this.image) formData.append('imagePath', this.image);
     formData.append('birthCertificateNumber', this.birthCert);
     formData.append('address', this.address);
     formData.append('genderId', this.gender);
@@ -105,14 +132,18 @@ export class EditStudentComponent {
     formData.append('classId', this.selectedClassId);
     formData.append('sectionId', this.selectedSectionId);
 
-    this.http.post('http://localhost:5028/api/Students', formData).subscribe({
-      next: (data) => {
-        console.log('Student created:', data);
-        this.router.navigate(['student/list']);
-      },
-      error: (err) => {
-        console.error('Error creating student:', err);
-      },
-    });
+    if (this.studentId) {
+      this.http
+        .put(`http://localhost:5028/api/Students/${this.studentId}`, formData)
+        .subscribe({
+          next: (data) => {
+            console.log('Student updated:', data);
+            this.router.navigate(['student/list']);
+          },
+          error: (err) => {
+            console.error('Error updating student:', err);
+          },
+        });
+    }
   }
 }
