@@ -52,8 +52,8 @@ export class EditStudentComponent implements OnInit {
   fetchStudentById(id: string) {
     this.http.get<any>(`http://localhost:5028/api/Students/${id}`).subscribe({
       next: (student) => {
-        this.fName = student.fName;
-        this.lName = student.lName;
+        this.fName = student.studentFName;
+        this.lName = student.studentLName;
         this.fatherName = student.fatherName;
         this.motherName = student.motherName;
         this.dob = student.dateOfBirth;
