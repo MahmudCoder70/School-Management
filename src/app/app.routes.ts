@@ -34,6 +34,8 @@ import { EditCurriculumComponent } from './components/Curriculum/edit-curriculum
 import { ViewComponent } from './components/schooltype/view/view.component';
 import { CreateComponent } from './components/schooltype/create/create.component';
 import { EditComponent } from './components/schooltype/edit/edit.component';
+import { EditBuildingRoomComponent } from './components/BuildingRoom/edit-building-room/edit-building-room.component';
+import { EditBuildingComponent } from './components/Building/edit-building/edit-building.component';
 
 
 export const routes : Routes= [
@@ -53,13 +55,13 @@ export const routes : Routes= [
   { path: 'section/edit', component: EditSectionComponent},
   { path: 'viewBuilding', component: ViewBuildingComponent },
   { path: 'createBuilding', component: CreateBuildingComponent },
-  { path: 'building-edit/:id', component: EditTeacherComponent },
+  { path: 'building-edit/:id', component: EditBuildingComponent },
   { path: 'viewBuildingRoom', component: ViewBuildingRoomComponent },
   { path: 'createBuildingRoom', component: CreateBuildingRoomComponent },
-  { path: 'BuildingRoom-edit/:id', component: EditTeacherComponent },
+  { path: 'BuildingRoom-edit/:id', component: EditBuildingRoomComponent },
   { path: 'shift/list', component: ViewShiftComponent },
   { path: 'shift/create', component: CreateShiftComponent },
-  { path: 'shift/edit', component: EditShiftComponent},
+  { path: 'shift-edit/:id', component: EditShiftComponent},
   { path: 'viewSubject', component: ViewSubjectComponent },
   { path: 'createSubject', component: CreateSubjectComponent },
   { path: 'edit-subject/:id', component: EditSubjectComponent },

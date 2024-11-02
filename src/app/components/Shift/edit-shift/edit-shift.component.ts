@@ -1,78 +1,77 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Subject } from '../../../Models/subject';
+import { DataService } from '../../../Services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Class } from '../../../Models/class';
+import { NotifyServiceService } from '../../../Services/notify.service';
+import { Curriculum } from '../../../Models/curriculum';
+import { Shift } from '../../../Models/shift';
 
 @Component({
   selector: 'app-edit-shift',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './edit-shift.component.html',
   styleUrl: './edit-shift.component.css'
 })
 export class EditShiftComponent {
-  route = inject(Router);
+
+  Shift: Shift = {
+    shiftId: undefined,
+    shiftName: undefined,
+    startTime: undefined,
+    endTime: undefined,
+  };
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private http: HttpClient
+    public dataSvc: DataService,
+    private router: Router,
+    private activatedRouter: ActivatedRoute,
+    private notifySvc: NotifyServiceService
   ) {}
-  ngOnInit(): void {
-    this.getShift();
-  }
 
-  shiftId: number = 0;
+  shiftForm: FormGroup = new FormGroup({
+    shiftId: new FormControl(undefined, Validators.required),
+    shiftName: new FormControl(undefined, Validators.required),
+    startTime: new FormControl(undefined, Validators.required),
+    endTime: new FormControl(undefined, Validators.required),
+  });
 
-  getShift() {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      console.log(params);
-      const id = params['id'];
-      this.shiftId = id;
+  ngOnInit() {
+    const id = this.activatedRouter.snapshot.params['id'];
 
-      this.http
-        .get('http://localhost:5028/api/Shifts' + id)
-        .subscribe((data: any) => {
-          console.log(data);
+    this.dataSvc.getShiftById(id).subscribe((x) => {
+      this.Shift = x;
 
-          this.shiftName = data.shiftName;
-          this.startTime = data.startTime;
-          this.endTime=data.endTime;
-          console.log(this.shiftName,this.startTime,this.endTime);
-          //this.shiftName = data.shiftName;
-          //this.startTime = data.startTime;
-          //this.endTime=data.endTime;
-
-        
-        });
+      this.shiftForm.patchValue(this.Shift);
     });
   }
 
-  shiftName: string = '';
-  startTime: string = '';
-  endTime: string = '';
- 
+  updateShift() {
+    var formData = new FormData();
+    formData.append('shiftId', this.shiftForm.get('subjectId')!.value);
+    formData.append('shiftFormName', this.shiftForm.get('subjectName')!.value);
+    formData.append('startTime', this.shiftForm.get('startTime')!.value);
+    formData.append('endTime', this.shiftForm.get('endTime')!.value);
 
-  
-  
-  async editShift() {
-    let formData: any = new FormData(); 
-    formData.append("shiftId",this.shiftId)
-    formData.append("shiftName",this.shiftName)
-
-
-      formData.append("startTime", this.startTime)
-      formData.append("endTime", this.endTime)
-     
-      
-    
-    this.http
-      .put('http://localhost:5028/api/Shifts/' + this.shiftId,formData)
-      .subscribe((data) => {
-        console.log(data);
-
-        this.route.navigate(['shift/list']);
-      });
+    this.dataSvc.updateShift(formData).subscribe({
+      next: (r) => {
+        console.log(r);
+        this.router.navigate(['/viewShift']);
+        this.notifySvc.success('Data updated successfully!!', 'DISMISS');
+      },
+      error: (err) => {
+        console.log(err);
+        this.notifySvc.fail('Data Update failed!!', 'DISMISS');
+      },
+    });
   }
-
 }
-

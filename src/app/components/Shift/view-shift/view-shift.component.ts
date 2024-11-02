@@ -1,7 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { DataService } from '../../../Services/data.service';
 import { Router, RouterLink } from '@angular/router';
+import { Curriculum } from '../../../Models/curriculum';
+import { CommonModule } from '@angular/common';
+import { NotifyServiceService } from '../../../Services/notify.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NotifyComponent } from '../../notify/notify.component';
+import { Shift } from '../../../Models/shift';
+
 
 @Component({
   selector: 'app-view-shift',
@@ -10,40 +16,39 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './view-shift.component.html',
   styleUrl: './view-shift.component.css'
 })
-export class ViewShiftComponent implements OnInit {
-  constructor(private http: HttpClient) {}
-  route = inject(Router);
-  shiftList: any [] = [];
-  ngOnInit(): void {
-    this.getShift();
-  }
+export class ViewShiftComponent {
+  shift: Shift[] = [];
 
-  getShift() {
-    this.http
-      .get('http://localhost:5028/api/Shifts')
-      .subscribe((data: any) => {
-        this.shiftList = data;
+  constructor(
+    public dataSvc: DataService,
+    private router: Router,
+    private notifySvc: NotifyServiceService,
+    private dialog: MatDialog
+  ) {}
 
-        console.log(this.shiftList);
-      });
-  }
-
-  // deleteShift(id: number | string) {
-  //   this.http.delete('/dfd/' + id).subscribe(() => {
-  //     this.getShift();
-  //   });
-  // }
-
-  // editShift(id: any) {
-  //   this.route.navigate(['shift/edit'], { queryParams: { id: id } });
-  // }
-  deleteShift(id: number) {
-    this.http.delete(`http://localhost:5028/api/Shifts/${id}`).subscribe(() => {
-      this.getShift(); // Refresh the student list after deletion
+  ngOnInit() {
+    this.dataSvc.getShiftList().subscribe((result) => {
+      this.shift = result;
+      console.log(result);
     });
   }
 
-  editShift(id: number) {
-    this.route.navigate(['shift/edit'], { queryParams: { id: id } });
+  confirmDelete(item: Shift) {
+    this.dialog
+      .open(NotifyComponent, {
+        width: '450px',
+      })
+      .afterClosed()
+      .subscribe((r) => {
+        if (r)
+          this.dataSvc.deleteShift(Number(item.shiftId)).subscribe(
+            (x) => {
+              this.notifySvc.success('Data Deleted successfully!!', 'DISMISS');
+            },
+            (err) => {
+              this.notifySvc.fail('Data Delete failed!!', 'DISMISS');
+            }
+          );
+      });
   }
 }

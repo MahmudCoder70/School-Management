@@ -96,7 +96,7 @@ export class EditStudentComponent implements OnInit {
   fetchSections() {
     this.http
       .get<{ sectionId: string; sectionName: string }[]>(
-        'http://localhost:5028/api/Sections/GetSections'
+        'http://localhost:5028/api/Sections'
       )
       .subscribe({
         next: (data) => (this.sections = data),

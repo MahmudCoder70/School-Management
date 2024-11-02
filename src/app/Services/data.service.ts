@@ -255,10 +255,10 @@ deleteSchool(id: number): Observable<School> {
       data
     );
   }
-  deleteShift(id: number): Observable<Shift> {
-    return this.http.post<Shift>(
+  deleteShift(id: any): Observable<Shift> {
+    return this.http.delete<Shift>(
       'http://localhost:5028/api/Shifts/Delete/' + id,
-      null
+      
     );
   }
 

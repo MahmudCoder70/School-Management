@@ -1,37 +1,54 @@
-<div class="shift-form-container">
-  <h1>Edit shift</h1>
-  <form class="edit-form" (ngSubmit)="editShift()">
-    <div class="form-group">
-      <label for="shiftName">shift Name:</label>
-      <input
-        [(ngModel)]="shiftName"
-        type="text"
-        id="shiftName"
-        name="shiftName"
-        required
-      />
+<div class="wrapper container">
+  <form [formGroup]="shiftForm" (ngSubmit)="updateShift()">
+    <div class="row">
+      <div class="col-6">
+        <h2 class="display-5">Update Shift Data</h2>
+        <div class="row mb-2">
+          <label class="col-form-label col-4" for="shiftName"
+            >Shift Name</label
+          >
+          <div class="col-8">
+            <input
+              type="text"
+              formControlName="shiftName"
+              class="form-control form-control-sm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <label class="col-form-label col-4" for="startTime"
+            >Start Time</label
+          >
+          <div class="col-8">
+            <input
+              type="time"
+              formControlName="startTime"
+              class="form-control form-control-sm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <label class="col-form-label col-4" for="endTime"
+            >End Time</label
+          >
+          <div class="col-8">
+            <input
+              type="time"
+              formControlName="endTime"
+              class="form-control form-control-sm"
+            />
+          </div>
+        </div>
+        
+
+        <div class="row mb-2">
+          <div class="col-8 offset-4">
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="startTime">Start Time:</label>
-      <input
-        [(ngModel)]="startTime"
-        type="time"
-        id="startTime"
-        name="startTime"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="endTime">End Time:</label>
-      <input
-        [(ngModel)]="endTime"
-        type="time"
-        id="endTime"
-        name="endTime"
-        required
-      />
-    </div>
-  
-    <button type="submit" class="submit-btn">Save</button>
   </form>
 </div>

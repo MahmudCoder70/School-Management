@@ -1,26 +1,41 @@
-<div class="shift-list">
-  <h1> Shift Info</h1>
-  <ul class="list">
-    <li class="list-item" *ngFor="let item of shiftList">
-      <div class="shift-info">
-        <!-- <p>{{ item?.image}}</p> -->
-       
-        <p><b>ShiftName : </b>{{ item?.shiftName}} </p> <br>
-        <p><b>StartTime : </b>{{ item?.startTime }}</p><br>
-        <p><b>EndTime : </b>{{ item?.endTime }}</p>
-       
+<div class="row no-gutter border p-2">
+  <div class="col">
+    <div class="d-flex justify-content-between">
+      <h3 style="text-align: center; color: crimson">Shift Info</h3>
+      <div class="d-flex justify-content-end mb-4">
         <button
-          class="btn btn-primary"
-          style="margin-right: 5px"
-          (click)="deleteShift(item.shiftId)">
-          Delete
-        </button>
-
-        <button class="btn btn-primary" (click)="editShift(item.shiftId)">
-          Edit
+          type="button"
+          [routerLink]="['/createShift']"
+          class="btn btn-outline-primary btn-sm me-2"
+        >
+          Add
         </button>
       </div>
-    </li>
-  </ul>
-  
+    </div>
+    <div *ngFor="let item of shift" class="card mb-4">
+      <div class="card-header">
+        <div class="col-10">
+          <div class="d-flex justify-content-end">
+            <button
+              [routerLink]="['/shift-edit', item.shiftId]"
+              class="btn btn-outline-success btn-sm"
+            >
+              Edit
+            </button>
+            &nbsp;
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="confirmDelete(item)"
+            >
+              delete
+            </button>
+          </div>
+
+          <b>ShiftName : </b> {{ item.shiftName }} <br />
+          <b>StartTime : </b> {{ item.startTime }} <br />
+          <b>EndTime : </b>{{ item.endTime }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
