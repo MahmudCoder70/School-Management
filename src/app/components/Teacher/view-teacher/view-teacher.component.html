@@ -26,11 +26,11 @@
           </div>
 
           <div>
-            <b>Name: </b> {{ item.teacherName }} | <b>Date Of Birth:</b>
+           <div style="text-align: center;"><b>Name: </b><p style="font-size: 18px;font-weight: bold;">{{ item.teacherName }}</p></div><b>Date Of Birth:</b>
             {{ item.dateOfBirth }}<br /><b>Phone: </b> {{ item.phone }} |
             <b>Qualification: </b> {{ item.qualification }} <br />
-            <b>Join Date:</b>{{ item.joinDate }} <b>Gender</b>
-            {{ getGenderName(item.genderId) }}
+            <b>Join Date:</b>{{ item.joinDate }} <b>Gender: </b>
+            {{ getGenderName(item.genderId) }}<br> <b>Campus: </b>{{getCampusName(item.campusId)}} <b>Section: </b>{{getSectionName(item.sectionId)}} <br><b>Academic Year</b> {{getYear(item.academicYearId)}}
           </div>
           <div class="d-flex justify-content-end">
             <button
@@ -60,6 +60,18 @@
           <tbody>
             <tr *ngFor="let p of item.subjectsList">
               <td># &nbsp;{{ getSubName(p.subjectId) }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th style="color: sienna;">Classes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of item.classList">
+              <td># &nbsp;{{ getClassName(p.classId) }}</td>
             </tr>
           </tbody>
         </table>

@@ -12,6 +12,10 @@ import {
 import { CommonModule } from '@angular/common';
 import { NotifyServiceService } from '../../../Services/notify.service';
 import { Gender } from '../../../Models/gender';
+import { Campus } from '../../../Models/campus';
+import { Section } from '../../../Models/section';
+import { AcademicYear } from '../../../Models/academicYear';
+import { Class } from '../../../Models/class';
 
 @Component({
   selector: 'app-create-teacher',
@@ -22,7 +26,11 @@ import { Gender } from '../../../Models/gender';
 })
 export class CreateTeacherComponent {
   subjectList: Subject[] = [];
+  classList:Class[]=[];
   gender: Gender[] = [];
+  campus:Campus[]=[];
+  section:Section[]=[];
+  academicYear:AcademicYear[]=[];
   teacherImage: File = null!;
   constructor(
     public dataSvc: DataService,
@@ -37,11 +45,19 @@ export class CreateTeacherComponent {
     qualification: new FormControl(undefined, Validators.required),
     joinDate: new FormControl(undefined, Validators.required),
     genderId: new FormControl(undefined),
+    campusId:new FormControl(undefined),
+    sectionId:new FormControl(undefined),
+    academicYearId:new FormControl(undefined),
 
+    clslist:new FormArray([]),
     subList: new FormArray([]),
+    
   });
   get subListArray() {
     return this.teacherForm.controls['subList'] as FormArray;
+  }
+  get clsListArray() {
+    return this.teacherForm.controls['clslist'] as FormArray;
   }
   addSub() {
     this.subListArray.push(
@@ -50,13 +66,40 @@ export class CreateTeacherComponent {
       })
     );
   }
+  addclass() {
+    this.clsListArray.push(
+      new FormGroup({
+        classId: new FormControl(undefined, Validators.required),
+      })
+    );
+  }
   removeSubList(index: number) {
     if (this.subListArray.controls.length > 0)
       this.subListArray.removeAt(index);
   }
+  removeclsList(index: number) {
+    if (this.clsListArray.controls.length > 0)
+      this.clsListArray.removeAt(index);
+  }
   ngOnInit() {
     this.dataSvc.getSubjectList().subscribe((result) => {
       this.subjectList = result;
+      console.log(result);
+    });
+    this.dataSvc.getAcademicYear().subscribe((result) => {
+      this.academicYear = result;
+      console.log(result);
+    });
+    this.dataSvc.getClass().subscribe((result) => {
+      this.classList = result;
+      console.log(result);
+    });
+    this.dataSvc.getSections().subscribe((result) => {
+      this.section = result;
+      console.log(result);
+    });
+    this.dataSvc.getCampus().subscribe((result) => {
+      this.campus = result;
       console.log(result);
     });
     this.dataSvc.getGender().subscribe((result) => {
@@ -65,6 +108,8 @@ export class CreateTeacherComponent {
     });
 
     this.addSub();
+    this.addclass();
+
   }
   onFileSelected(event: any) {
     this.teacherImage = event.target.files[0];
@@ -75,6 +120,10 @@ export class CreateTeacherComponent {
       'SubjectStringify',
       JSON.stringify(this.teacherForm.get('subList')!.value)
     );
+    formData.append(
+      'classStringify',
+      JSON.stringify(this.teacherForm.get('clslist')!.value)
+    );
     formData.append('teacherName', this.teacherForm.get('teacherName')!.value);
     formData.append('dateOfBirth', this.teacherForm.get('dateOfBirth')!.value);
     formData.append('phone', this.teacherForm.get('phone')!.value);
@@ -84,6 +133,9 @@ export class CreateTeacherComponent {
     );
     formData.append('joinDate', this.teacherForm.get('joinDate')!.value);
     formData.append('genderId', this.teacherForm.get('genderId')!.value);
+    formData.append('sectionId', this.teacherForm.get('sectionId')!.value);
+    formData.append('campusId', this.teacherForm.get('campusId')!.value);
+    formData.append('academicYearId', this.teacherForm.get('academicYearId')!.value);
 
     formData.append('imagePath', this.teacherImage, this.teacherImage.name);
 

@@ -7,6 +7,9 @@ export class Teacher {
     public teacherImage?: string,
     public qualification?: string,
     public joinDate?: Date,
-    public genderId?: string
+    public genderId?: string,
+    public sectionId?:string,
+    public campusId?:string,
+    public academicYearId?:string
   ) {}
 }

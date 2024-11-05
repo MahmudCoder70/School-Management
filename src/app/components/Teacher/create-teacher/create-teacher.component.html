@@ -68,9 +68,9 @@
               formControlName="genderId"
               class="form-select form-select-sm"
             >
-              <option value="" disabled selected>--Select Gender--</option>
-              <option *ngFor="let p of gender" value="{{ p.genderId }}">
-                {{ p.genderName }}
+              <option value="null" disabled selected>--Select Gender--</option>
+              <option *ngFor="let g of gender" value="{{ g.genderId }}">
+                {{ g.genderName }}
               </option>
             </select>
           </div>
@@ -83,6 +83,48 @@
               formControlName="joinDate"
               class="form-control form-control-sm"
             />
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-form-label col-4" for="sectionId">Section</label>
+          <div class="col-8">
+            <select
+              formControlName="sectionId"
+              class="form-select form-select-sm"
+            >
+              <option value="null" disabled selected>--Select Section--</option>
+              <option *ngFor="let s of section" value="{{ s.sectionId }}">
+                {{ s.sectionName }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-form-label col-4" for="campusId">Campus</label>
+          <div class="col-8">
+            <select
+              formControlName="campusId"
+              class="form-select form-select-sm"
+            >
+              <option value="null" disabled selected>--Select Campus--</option>
+              <option *ngFor="let c of campus" value="{{ c.campusId }}">
+                {{ c.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-form-label col-4" for="academicYearId">Academic Year</label>
+          <div class="col-8">
+            <select
+              formControlName="academicYearId"
+              class="form-select form-select-sm"
+            >
+              <option value="null" disabled selected>--Select Year--</option>
+              <option *ngFor="let a of academicYear" value="{{ a.academicYearId }}">
+                {{ a.year }}
+              </option>
+            </select>
           </div>
         </div>
 
@@ -130,13 +172,106 @@
               </div>
             </div>
           </ng-container>
-        </ng-container> 
-      </div>     
+        </ng-container>
+        <div>
+          <h3 style=" margin-left: 80px">Select Class</h3>
+        <div class="d-flex justify-content-end">
+          <button
+            type="button"
+            (click)="addclass()"
+            class="btn btn-info btn-sm"
+          >
+            +
+          </button>
+        </div>
+        </div>
+         
+        <ng-container formArrayName="clslist">
+          <ng-container *ngFor="let p of clsListArray.controls; let c = index">
+            <div [formGroupName]="c">
+              <div class="row mb-2">
+                <div class="col-10">
+                  <select
+                    formControlName="classId"
+                    class="form-select form-select-sm"
+                  >
+                    <option disabled value="null" selected>
+                      ----Select----
+                    </option>
+                    <option style="color:deeppink;"
+                      *ngFor="let item of classList"
+                      value="{{ item.classId }}"
+                    >
+                      {{ item.className }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-2">
+                  <button
+                    (click)="removeclsList(c)"
+                    class="btn btn-outline-danger btn-sm"
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+        
+
+
+      </div> 
     </div>
     <div class="row mb-2">
       <div class="col-8 offset-2">
         <button type="submit" class="btn btn-primary" style="width: 120%;">Save</button>
       </div>
     </div>
+<!-- <h3 style=" margin-left: 80px">Select Class</h3>
+        <div class="d-flex justify-content-end">
+          <button
+            type="button"
+            (click)="addclass()"
+            class="btn btn-info btn-sm"
+          >
+            +
+          </button>
+        </div> 
+        <ng-container formArrayName="clsList">
+          <ng-container *ngFor="let f of clsListArray.controls; let c = index">
+            <div [formGroupName]="c">
+              <div class="row mb-2">
+                <div class="col-10">
+                  <select
+                    formControlName="classId"
+                    class="form-select form-select-sm"
+                  >
+                    <option disabled value="null" selected>
+                      ----Select----
+                    </option>
+                    <option style="color:deeppink;"
+                      *ngFor="let item of classList"
+                      value="{{ item.classId }}"
+                    >
+                      {{ item.className }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-2">
+                  <button
+                    (click)="removeclsList(c)"
+                    class="btn btn-outline-danger btn-sm"
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container> -->
   </form>
 </div>
+
+        
+

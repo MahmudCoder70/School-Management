@@ -8,6 +8,11 @@ import { Gender } from '../../../Models/gender';
 import { NotifyComponent } from '../../notify/notify.component';
 import { NotifyServiceService } from '../../../Services/notify.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Class } from '../../../Models/class';
+import { Campus } from '../../../Models/campus';
+import { Section } from '../../../Models/section';
+import { AcademicYear } from '../../../Models/academicYear';
+
 
 @Component({
   selector: 'app-view-teacher',
@@ -18,8 +23,13 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ViewTeacherComponent {
   subjectList: Subject[] = [];
+  classList:Class[]=[];
   teacherList: TeacherSubject[] = [];
   gender: Gender[] = [];
+  campus:Campus[]=[];
+  section:Section[]=[];
+  academicYear:AcademicYear[]=[];
+
   
   constructor(
     public dataSvc: DataService,
@@ -41,6 +51,22 @@ export class ViewTeacherComponent {
       this.gender = result;
       console.log(result);
     });
+    this.dataSvc.getClassList().subscribe((result) => {
+      this.classList = result;
+      console.log(result);
+    });
+    this.dataSvc.getCampus().subscribe((result) => {
+      this.campus = result;
+      console.log(result);
+    });
+    this.dataSvc.getSections().subscribe((result) => {
+      this.section = result;
+      console.log(result);
+    });
+    this.dataSvc.getAcademicYear().subscribe((result) => {
+      this.academicYear = result;
+      console.log(result);
+    });
   }
   getSubName(id: any) {
     let data = this.subjectList.find((x) => x.subjectId == id);
@@ -50,6 +76,23 @@ export class ViewTeacherComponent {
     let data = this.gender.find((x) => x.genderId == id);
     return data ? data.genderName : '';
   }
+  getClassName(id: any) {
+    let data = this.classList.find((x) => x.classId == id);
+    return data ? data.className : '';
+  }
+  getCampusName(id: any) {
+    let data = this.campus.find((x) => x.campusId == id);
+    return data ? data.name : '';
+  }
+  getSectionName(id: any) {
+    let data = this.section.find((x) => x.sectionId == id);
+    return data ? data.sectionName : '';
+  }
+  getYear(id: any) {
+    let data = this.academicYear.find((x) => x.academicYearId == id);
+    return data ? data.year : '';
+  }
+  
   confirmDelete(item: TeacherSubject) {
     this.dialog
       .open(NotifyComponent, {

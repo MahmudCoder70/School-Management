@@ -1,3 +1,7 @@
+
+import { Campus } from './campus';
+import { Class } from './class';
+import { School } from './school';
 import { Subject } from './subject';
 
 export class TeacherSubject {
@@ -11,6 +15,11 @@ export class TeacherSubject {
     public qualification?: string,
     public joinDate?: Date,
     public genderId?: string,
-    public subjectsList?: Subject[]
+    public sectionId?:string,
+    public campusId?:string,
+    public academicYearId?:string,
+    public subjectsList?: Subject[],
+    public classList?: Class[]
+
   ) {}
 }

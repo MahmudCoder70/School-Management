@@ -83,6 +83,48 @@
             />
           </div>
         </div>
+        <div class="row mb-2">
+          <label class="col-form-label col-4" for="sectionId">Section</label>
+          <div class="col-8">
+            <select
+              formControlName="sectionId"
+              class="form-select form-select-sm"
+            >
+              <option value="" disabled selected>--Select Section--</option>
+              <option *ngFor="let p of section" value="{{ p.sectionId }}">
+                {{ p.sectionName }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-form-label col-4" for="campusId">Campus</label>
+          <div class="col-8">
+            <select
+              formControlName="campusId"
+              class="form-select form-select-sm"
+            >
+              <option value="" disabled selected>--Select Campus--</option>
+              <option *ngFor="let p of campus" value="{{ p.campusId }}">
+                {{ p.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label class="col-form-label col-4" for="academicYearId">Academic Year</label>
+          <div class="col-8">
+            <select
+              formControlName="academicYearId"
+              class="form-select form-select-sm"
+            >
+              <option value="" disabled selected>--Select Year--</option>
+              <option *ngFor="let p of academicYear" value="{{ p.academicYearId }}">
+                {{ p.year }}
+              </option>
+            </select>
+          </div>
+        </div>
 
         
       </div>
@@ -129,6 +171,53 @@
             </div>
           </ng-container>
         </ng-container>
+        <div>
+          <h2 style="margin-left: 30%;">Update Class</h2>
+        <div class="d-flex justify-content-end">
+          <button
+            type="button"
+            (click)="addclass()"
+            class="btn btn-info btn-sm"
+          >
+            +
+          </button>
+        </div> 
+        </div>
+        
+        <ng-container formArrayName="clslist">
+          <ng-container *ngFor="let p of clsListArray.controls; let i = index">
+            <div [formGroupName]="i">
+              <div class="row mb-2">
+                <div class="col-10">
+                  <select
+                    formControlName="classId"
+                    class="form-select form-select-sm"
+                  >
+                    <option disabled value="null" selected>
+                      ----Select----
+                    </option>
+                    <option style="color:deeppink;"
+                      *ngFor="let item of classList"
+                      value="{{ item.classId }}"
+                    >
+                      {{ item.className }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-2">
+                  <button
+                    (click)="removeClsList(i)"
+                    class="btn btn-outline-danger btn-sm"
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+
+
       </div>
       <div class="row mb-2">
         <div class="col-8 offset-2">

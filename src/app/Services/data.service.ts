@@ -17,6 +17,8 @@ import { Class } from '../Models/class';
 import { Curriculum } from '../Models/curriculum';
 import { Shift } from '../Models/shift';
 import { SchoolType } from '../Models/school-type';
+import { Section } from '../Models/section';
+import { AcademicYear } from '../Models/academicYear';
 
 @Injectable({
   providedIn: 'root',
@@ -118,7 +120,7 @@ deleteSchool(id: number): Observable<School> {
   }
         //student
   getStudentList(): Observable<Student[]> {
-    return this.http.get<Student[]>('http://localhost:5028/api/Students');
+    return this.http.get<Student[]>('http://localhost:5028/api/Guardians/GetStudent');
   }
         //guardian
   postStudentGuardian(data: FormData): Observable<StudentGuardian> {
@@ -255,20 +257,26 @@ deleteSchool(id: number): Observable<School> {
       data
     );
   }
-  deleteShift(id: any): Observable<Shift> {
-    return this.http.delete<Shift>(
+  deleteShift(id: number): Observable<Shift> {
+    return this.http.post<Shift>(
       'http://localhost:5028/api/Shifts/Delete/' + id,
-      
+      null
     );
   }
-
+        //AcademicYear
+  getAcademicYear(): Observable<AcademicYear[]> {
+    return this.http.get<AcademicYear[]>('http://localhost:5028/api/AcademicYears');
+        }      
 
         //schooltypes
   getAllSchoolTypes(): Observable<SchoolType[]> {
     return this.http.get<SchoolType[]>('http://localhost:5028/api/SchoolTypes');
   }
   
-
+      //Section
+  getSections(): Observable<Section[]> {
+    return this.http.get<Section[]>('http://localhost:5028/api/Sections');
+      }
   
         //building
   

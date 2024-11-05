@@ -13,6 +13,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TeacherSubject } from '../../../Models/teacher-subject';
 import { NotifyServiceService } from '../../../Services/notify.service';
 import { Gender } from '../../../Models/gender';
+import { Campus } from '../../../Models/campus';
+import { Section } from '../../../Models/section';
+import { AcademicYear } from '../../../Models/academicYear';
+import { Class } from '../../../Models/class';
 
 @Component({
   selector: 'app-edit-teacher',
@@ -23,7 +27,11 @@ import { Gender } from '../../../Models/gender';
 })
 export class EditTeacherComponent {
   subjectList: Subject[] = [];
+  classList:Class[]=[];
   gender: Gender[] = [];
+  campus:Campus[]=[];
+  section:Section[]=[];
+  academicYear:AcademicYear[]=[];
   teacherImage: File = null!;
 
   teacherSubject: TeacherSubject = {
@@ -35,6 +43,9 @@ export class EditTeacherComponent {
     qualification: undefined,
     genderId: undefined,
     joinDate: undefined,
+    sectionId:undefined,
+    campusId:undefined,
+    academicYearId:undefined
   };
   constructor(
     public dataSvc: DataService,
@@ -50,10 +61,18 @@ export class EditTeacherComponent {
     qualification: new FormControl(undefined, Validators.required),
     genderId: new FormControl(undefined, Validators.required),
     joinDate: new FormControl(undefined, Validators.required),
+    sectionId: new FormControl(undefined, Validators.required),
+    campusId: new FormControl(undefined, Validators.required),
+    academicYearId: new FormControl(undefined, Validators.required),
+
     subList: new FormArray([]),
+    clslist:new FormArray([])
   });
   get subListArray() {
     return this.teacherForm.controls['subList'] as FormArray;
+  }
+  get clsListArray() {
+    return this.teacherForm.controls['clslist'] as FormArray;
   }
   addSub(item?: Subject) {
     if (item) {
@@ -70,9 +89,28 @@ export class EditTeacherComponent {
       );
     }
   }
+  addclass(item?: Class) {
+    if (item) {
+      this.clsListArray.push(
+        new FormGroup({
+          classId: new FormControl(item.classId, Validators.required),
+        })
+      );
+    } else {
+      this.clsListArray.push(
+        new FormGroup({
+          classId: new FormControl(undefined, Validators.required),
+        })
+      );
+    }
+  }
   removeSubList(index: number) {
     if (this.subListArray.controls.length > 0)
       this.subListArray.removeAt(index);
+  }
+  removeClsList(index: number) {
+    if (this.clsListArray.controls.length > 0)
+      this.clsListArray.removeAt(index);
   }
   ngOnInit() {
     const id = this.activatedRouter.snapshot.params['id'];
@@ -94,14 +132,32 @@ export class EditTeacherComponent {
       this.teacherSubject.subjectsList?.forEach((item) => {
         this.addSub(item);
       });
+      this.teacherSubject.classList?.forEach((item) => {
+        this.addclass(item);
+      });
     });
     this.dataSvc.getGender().subscribe((result) => {
       this.gender = result;
       console.log(result);
     });
+    this.dataSvc.getCampus().subscribe((result) => {
+      this.campus = result;
+      console.log(result);
+    });
+    this.dataSvc.getSections().subscribe((result) => {
+      this.section = result;
+      console.log(result);
+    });
+    this.dataSvc.getAcademicYear().subscribe((result) => {
+      this.academicYear = result;
+      console.log(result);
+    });
 
     this.dataSvc.getSubjectList().subscribe((result) => {
       this.subjectList = result;
+    });
+    this.dataSvc.getClass().subscribe((result) => {
+      this.classList = result;
     });
   }
   onFileSelected(event: any) {
@@ -113,6 +169,10 @@ export class EditTeacherComponent {
       'subjectStringify',
       JSON.stringify(this.teacherForm.get('subList')!.value)
     );
+    formData.append(
+      'classStringify',
+      JSON.stringify(this.teacherForm.get('clslist')!.value)
+    );
     formData.append('teacherId', this.teacherForm.get('teacherId')!.value);
     formData.append('teacherName', this.teacherForm.get('teacherName')!.value);
     formData.append('dateOfBirth', this.teacherForm.get('dateOfBirth')!.value);
@@ -122,6 +182,10 @@ export class EditTeacherComponent {
       this.teacherForm.get('qualification')!.value
     );
     formData.append('joinDate', this.teacherForm.get('joinDate')!.value);
+    formData.append('genderId', this.teacherForm.get('genderId')!.value);
+    formData.append('sectionId', this.teacherForm.get('sectionId')!.value);
+    formData.append('campusId', this.teacherForm.get('campusId')!.value);
+    formData.append('academicYearId', this.teacherForm.get('academicYearId')!.value);
     if (this.teacherImage) {
       formData.append('imagePath', this.teacherImage, this.teacherImage.name);
     }
