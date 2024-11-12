@@ -36,9 +36,11 @@ import { CreateComponent } from './components/schooltype/create/create.component
 import { EditComponent } from './components/schooltype/edit/edit.component';
 import { EditBuildingRoomComponent } from './components/BuildingRoom/edit-building-room/edit-building-room.component';
 import { EditBuildingComponent } from './components/Building/edit-building/edit-building.component';
+import { CreateConfigurationComponent } from './components/RoutineConfiguration/create-configuration/create-configuration.component';
+import { EditConfigurationComponent } from './components/RoutineConfiguration/edit-configuration/edit-configuration.component';
+import { ViewConfigurationComponent } from './components/RoutineConfiguration/view-configuration/view-configuration.component';
 
-
-export const routes : Routes= [
+export const routes: Routes = [
   // {path:"",component:AppComponent},
   { path: 'home', component: HomeComponent },
   { path: 'student/list', component: StudentListComponent },
@@ -52,7 +54,7 @@ export const routes : Routes= [
   { path: 'edit-Guardian/:id', component: EditGuardianComponent },
   { path: 'section/View', component: ViewSectionComponent },
   { path: 'section/create', component: CreateSectionComponent },
-  { path: 'section/edit', component: EditSectionComponent},
+  { path: 'section/edit', component: EditSectionComponent },
   { path: 'viewBuilding', component: ViewBuildingComponent },
   { path: 'createBuilding', component: CreateBuildingComponent },
   { path: 'building-edit/:id', component: EditBuildingComponent },
@@ -61,20 +63,23 @@ export const routes : Routes= [
   { path: 'BuildingRoom-edit/:id', component: EditBuildingRoomComponent },
   { path: 'shift/list', component: ViewShiftComponent },
   { path: 'shift/create', component: CreateShiftComponent },
-  { path: 'shift-edit/:id', component: EditShiftComponent},
+  { path: 'shift-edit/:id', component: EditShiftComponent },
   { path: 'viewSubject', component: ViewSubjectComponent },
   { path: 'createSubject', component: CreateSubjectComponent },
   { path: 'edit-subject/:id', component: EditSubjectComponent },
-  { path: 'createcampus', component: CreateCampusComponent},
-  { path: 'getcampus', component: ViewCampusComponent},
-  { path: 'edit-campus/: id', component: EditCampusComponent},
+  { path: 'createcampus', component: CreateCampusComponent },
+  { path: 'getcampus', component: ViewCampusComponent },
+  { path: 'edit-campus/: id', component: EditCampusComponent },
   { path: 'schoolView', component: SchoolViewComponent },
   { path: 'schoolsCreate', component: SchoolCreateComponent },
   { path: 'schools-edit/:id', component: SchoolEditComponent },
   { path: 'viewCurriculum', component: ViewCurriculumComponent },
   { path: 'createCurriculum', component: CreateCurriculumComponent },
   { path: 'edit-curriculum/:id', component: EditCurriculumComponent },
-  { path: 'schooltype', component:ViewComponent },
+  { path: 'schooltype', component: ViewComponent },
   { path: 'schooltype/create', component: CreateComponent },
-  { path: 'schooltype/edit', component: EditComponent},
+  { path: 'schooltype/edit', component: EditComponent },
+  { path: 'Create/Configuration', component: CreateConfigurationComponent },
+  { path: 'Configuration-edit/: id', component: EditConfigurationComponent },
+  { path: 'ViewConfiguration', component: ViewConfigurationComponent },
 ];

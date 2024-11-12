@@ -71,7 +71,7 @@
         name="selectedClassId"
         required
       >
-      <option value="">Select Class</option>
+        <option value="">Select Class</option>
         <option *ngFor="let class of classes" [value]="class.classId">
           {{ class.className }}
         </option>
@@ -86,7 +86,7 @@
         name="selectedSectionId"
         required
       >
-      <option value="">Select Section</option>
+        <option value="">Select Section</option>
         <option *ngFor="let section of sections" [value]="section.sectionId">
           {{ section.sectionName }}
         </option>

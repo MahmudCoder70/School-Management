@@ -1,0 +1,38 @@
+<h2>Edit Student Information</h2>
+<div class="student-form-container">
+  <form (ngSubmit)="updateConfig()">
+    <div class="form-group">
+      <label for="ConfigName">Configuration Name</label>
+      <input
+        type="text"
+        id="ConfigName"
+        [(ngModel)]="ConfigName"
+        name="ConfigName"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="ConfigValue">Configuration Value</label>
+      <input
+        type="text"
+        id="ConfigValue"
+        [(ngModel)]="ConfigValue"
+        name="ConfigValue"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="campus">Campus</label>
+      <select id="campus" [(ngModel)]="Campus" name="CampusId " required>
+        <option value="">Select Campus</option>
+        <option *ngFor="let campus of Campus" [value]="Campus.CampusId">
+          {{ Campus.name }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit">Update</button>
+  </form>
+</div>
