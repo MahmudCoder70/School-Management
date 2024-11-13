@@ -20,7 +20,7 @@ export class ViewSectionComponent implements OnInit  {
 
   getSection() {
     this.http
-      .get('http://localhost:5028/api/Sections')
+      .get('http://localhost:5028/api/Sections/GetSections')
       .subscribe((data: any) => {
         this.sectionList = data;
 

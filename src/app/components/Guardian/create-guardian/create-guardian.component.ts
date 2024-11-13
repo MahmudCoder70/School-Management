@@ -52,14 +52,24 @@ export class CreateGuardianComponent {
     if (this.studListArray.controls.length > 0)
       this.studListArray.removeAt(index);
   }
+  // ngOnInit() {
+  //   this.dataSvc.getStudentList().subscribe((result) => {
+  //     this.studentist = result;
+  //     console.log(result);
+  //   });
+
+  //   this.addStud();
+  // }
+
   ngOnInit() {
     this.dataSvc.getStudentList().subscribe((result) => {
       this.studentist = result;
-      console.log(result);
+      console.log(result);  // Ensure data is fetched
     });
-
+  
     this.addStud();
   }
+  
   insertGuardian() {
     var formData = new FormData();
     formData.append(
