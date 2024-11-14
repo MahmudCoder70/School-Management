@@ -8,19 +8,19 @@ import { Router, RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './view-section.component.html',
-  styleUrl: './view-section.component.css'
+  styleUrl: './view-section.component.css',
 })
-export class ViewSectionComponent implements OnInit  {
+export class ViewSectionComponent implements OnInit {
   constructor(private http: HttpClient) {}
   route = inject(Router);
-  sectionList: any [] = [];
+  sectionList: any[] = [];
   ngOnInit(): void {
     this.getSection();
   }
 
   getSection() {
     this.http
-      .get('http://localhost:5028/api/Sections')
+      .get('http://localhost:5028/api/Sections/GetSections')
       .subscribe((data: any) => {
         this.sectionList = data;
 
@@ -28,16 +28,15 @@ export class ViewSectionComponent implements OnInit  {
       });
   }
 
-
-
-
   deleteSection(id: any) {
-    this.http.delete('http://localhost:5028/api/Sections/' + id).subscribe((id:any) => {
-      this.getSection();
-    });
+    this.http
+      .delete('http://localhost:5028/api/Sections/' + id)
+      .subscribe((id: any) => {
+        this.getSection();
+      });
   }
 
   editSection(id: number) {
-    this.route.navigate(['section/edit'], { queryParams: { id: id } });
-  }
+    this.route.navigate(['section/edit'], { queryParams: { id: id } });
+  }
 }

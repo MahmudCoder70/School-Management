@@ -70,7 +70,7 @@ export class CreateStudentComponent {
   fetchSections() {
     this.http
       .get<{ sectionId: string; sectionName: string }[]>(
-        'http://localhost:5028/api/Sections'
+        'http://localhost:5028/api/Sections/GetSections'
       )
       .subscribe({
         next: (data) => {

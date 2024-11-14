@@ -21,7 +21,7 @@ export class CreateSectionComponent {
     formData.append('sectionName', this.sectionName);
 
     this.http
-      .post('http://localhost:5028/api/Sections', formData)
+      .post('http://localhost:5028/api/Sections/GetSections', formData)
       .subscribe((data) => {
         console.log(data);
       });
