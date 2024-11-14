@@ -120,7 +120,7 @@ deleteSchool(id: number): Observable<School> {
   }
         //student
   getStudentList(): Observable<Student[]> {
-    return this.http.get<Student[]>('http://localhost:5028/api/Guardians/GetStudent');
+    return this.http.get<Student[]>('http://localhost:5028/api/Guardians');
   }
         //guardian
   postStudentGuardian(data: FormData): Observable<StudentGuardian> {
