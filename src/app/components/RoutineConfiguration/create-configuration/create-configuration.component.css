@@ -9,6 +9,9 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+  #campus{
+    color: black;
+  }
   /* Form title styling */
   h2 {
     text-align: center;
