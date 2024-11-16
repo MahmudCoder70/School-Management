@@ -38,7 +38,7 @@ import { EditBuildingRoomComponent } from './components/BuildingRoom/edit-buildi
 import { EditBuildingComponent } from './components/Building/edit-building/edit-building.component';
 import { CreateConfigurationComponent } from './components/RoutineConfiguration/create-configuration/create-configuration.component';
 import { EditConfigurationComponent } from './components/RoutineConfiguration/edit-configuration/edit-configuration.component';
-import { ViewConfigurationComponent } from './components/RoutineConfiguration/view-configuration/view-configuration.component';
+import { ConfigurationListComponent } from './components/RoutineConfiguration/configuration-list/configuration-list.component';
 
 export const routes: Routes = [
   // {path:"",component:AppComponent},
@@ -79,7 +79,7 @@ export const routes: Routes = [
   { path: 'schooltype', component: ViewComponent },
   { path: 'schooltype/create', component: CreateComponent },
   { path: 'schooltype/edit', component: EditComponent },
-  { path: 'Create/Configuration', component: CreateConfigurationComponent },
-  { path: 'Configuration-edit/: id', component: EditConfigurationComponent },
-  { path: 'ViewConfiguration', component: ViewConfigurationComponent },
+  { path: 'Configuration/Create', component: CreateConfigurationComponent },
+  { path: 'Configuration/Edit', component: EditConfigurationComponent },
+  { path: 'Configuration/List', component: ConfigurationListComponent },
 ];

@@ -1,106 +1,95 @@
-/* Container styling */
 .student-form-container {
-    max-width: 500px;
-    margin: auto;
+    max-width: 600px;
+    margin: 40px auto;
     padding: 20px;
-    border: 1px solid #ddd;
+    background-color: #fff;
     border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
   
-  /* Form title styling */
   h2 {
     text-align: center;
-    margin-bottom: 20px;
     color: orangered;
+    font-size: 28px;
+    margin-bottom: 20px;
   }
   
-  /* Form group styling */
+  hr {
+    margin: 10px 0;
+    border: 0;
+    border-top: 2px solid #f0f0f0;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
   .form-group {
-    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
   }
   
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
   }
   
-  /* Input field styling */
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
+  input,
+  select {
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .form-group input:focus,
-  .form-group select:focus {
+  input:focus,
+  select:focus {
     border-color: orangered;
+    box-shadow: 0 0 8px rgba(255, 69, 0, 0.3);
     outline: none;
   }
   
-  /* Button styling */
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  button {
     background-color: orangered;
     color: #fff;
+    padding: 12px 20px;
+    font-size: 1.2rem;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
   }
   
-  button[type="submit"]:hover {
-    background-color: darkorange;
+  button:hover {
+    background-color: #ff5722;
   }
   
-  /* Responsive Styling */
-  @media (max-width: 768px) {
-    .student-form-container {
-      padding: 15px;
-      margin: 10px;
-    }
-    
-    h2 {
-      font-size: 20px;
-    }
-  
-    .form-group input,
-    .form-group select {
-      font-size: 14px;
-      padding: 6px;
-    }
-  
-    button[type="submit"] {
-      font-size: 14px;
-      padding: 8px;
-    }
+  button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
   }
   
-  @media (max-width: 480px) {
-    .student-form-container {
-      padding: 10px;
-    }
+  button:focus {
+    outline: none;
+  }
   
-    h2 {
-      font-size: 18px;
-    }
+  button:active {
+    transform: scale(0.98);
+  }
   
-    .form-group input,
-    .form-group select {
-      font-size: 13px;
-      padding: 5px;
-    }
-  
-    button[type="submit"] {
-      font-size: 13px;
-      padding: 7px;
-    }
+  select option {
+    padding: 12px;
   }
   

@@ -1,0 +1,123 @@
+/* General Container Styling */
+.configuration-list-container {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 900px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .configuration-list-container h2 {
+    margin-bottom: 10px;
+    font-size: 1.8em;
+    color: #333;
+    text-align: center;
+  }
+  
+  .configuration-list-container hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 10px 0 20px;
+  }
+  
+  .configuration-list-container button[type="button"] {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .configuration-list-container button[type="button"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Table Styling */
+  .configuration-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .configuration-table thead tr {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .configuration-table th,
+  .configuration-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .configuration-table th {
+    font-weight: bold;
+  }
+  
+  .configuration-table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .configuration-table .no-data {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+  }
+  
+  /* Button Styling */
+  .btn-edit,
+  .btn-delete {
+    padding: 6px 12px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .btn-edit {
+    background-color: #28a745;
+  }
+  
+  .btn-edit:hover {
+    background-color: #218838;
+  }
+  
+  .btn-delete {
+    background-color: #dc3545;
+    margin-left: 5px;
+  }
+  
+  .btn-delete:hover {
+    background-color: #c82333;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .configuration-table th,
+    .configuration-table td {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .btn-edit,
+    .btn-delete {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+  
+    .configuration-list-container button[type="button"] {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  }
+  

@@ -1,19 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-view-configuration',
+  selector: 'app-configuration-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './view-configuration.component.html',
-  styleUrl: './view-configuration.component.css',
+  imports: [CommonModule, RouterModule],
+  templateUrl: './configuration-list.component.html',
+  styleUrl: './configuration-list.component.css',
 })
-export class ViewConfigurationComponent {
+export class ConfigurationListComponent implements OnInit {
   constructor(private http: HttpClient) {}
+
   route = inject(Router);
-  ViewConfig: any[] = [];
+  ConfigerList: any[] = [];
 
   ngOnInit(): void {
     this.getConfiguration();
@@ -22,8 +23,8 @@ export class ViewConfigurationComponent {
   getConfiguration() {
     this.http.get('http://localhost:5028/api/RoutineConfigurations').subscribe({
       next: (data: any) => {
-        this.ViewConfig = data;
-        console.log(this.ViewConfig); // Optional: for debugging purposes
+        this.ConfigerList = data;
+        console.log(this.ConfigerList); // Optional: for debugging purposes
       },
       error: (err) => {
         console.error('Error fetching Configuration data:', err);
@@ -31,7 +32,7 @@ export class ViewConfigurationComponent {
     });
   }
 
-  deleteConfig(id: any) {
+  deleteConfiguration(id: any) {
     this.http
       .delete('http://localhost:5028/api/RoutineConfigurations/' + id)
       .subscribe({
@@ -44,7 +45,8 @@ export class ViewConfigurationComponent {
       });
   }
 
-  editConfig(id: number) {
-    this.route.navigate(['Configuration-edit'], { queryParams: { id: id } });
+  editConfiguration(id: number) {
+    console.log(id);
+    this.route.navigate(['Configuration/Edit'], { queryParams: { id: id } });
   }
 }

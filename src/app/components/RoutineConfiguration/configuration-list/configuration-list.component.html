@@ -1,0 +1,48 @@
+<div class="configuration-list-container">
+  <h2>Configuration List</h2>
+  <hr />
+  <div>
+    <button type="button" routerLink="/Configuration/Create">
+      Add Configuration
+    </button>
+  </div>
+  <table class="configuration-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Configuration Name</th>
+        <th>Configuration Value</th>
+        <th>Campus</th>
+        <th>Shift</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let config of ConfigerList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ config.configName }}</td>
+        <td>{{ config.cinfigValue }}</td>
+        <td>{{ config.campus.name }}</td>
+        <td>{{ config.shift.shiftName }}</td>
+
+        <td>
+          <button
+            class="btn-edit"
+            (click)="editConfiguration(config.routineConfigurationId)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn-delete"
+            (click)="deleteConfiguration(config.routineConfigurationId)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="ConfigerList.length === 0">
+        <td colspan="5" class="no-data">No configurations available</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

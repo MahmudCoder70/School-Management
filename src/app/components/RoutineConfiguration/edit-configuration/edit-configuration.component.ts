@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,38 +11,98 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './edit-configuration.component.html',
   styleUrl: './edit-configuration.component.css',
 })
-export class EditConfigurationComponent {
+export class EditConfigurationComponent implements OnInit {
+  ConfigId!: number; // Holds the ID of the configuration to edit
   ConfigName: string = '';
-  ConfigValue: string = '';
-  Campus: any = '';
-  RoutineConfigurationId: string | null = null;
+  ConfigValue: any;
+  Campuses: any[] = [];
+  Shifts: any[] = [];
+  selectedCampusId: any;
+  selectedShiftId: any;
+
   constructor(
     private http: HttpClient,
-    private router: Router,
+    public router: Router,
     private route: ActivatedRoute
   ) {}
 
-  updateConfig() {
-    const formData = new FormData();
-    formData.append('ConfigName', this.ConfigName);
-    formData.append('ConfigValue', this.ConfigValue);
-    formData.append('CampusId', this.Campus);
+  ngOnInit() {
+    // Retrieve the configuration ID from the route parameters
+    this.route.queryParams.subscribe((params) => {
+      this.ConfigId = +params['id']; // Convert to number
+      this.loadConfiguration(this.ConfigId);
+    });
 
-    if (this.RoutineConfigurationId) {
-      this.http
-        .put(
-          `http://localhost:5028/api/RoutineConfigurations/${this.RoutineConfigurationId}`,
-          formData
-        )
-        .subscribe({
-          next: (data) => {
-            console.log('Configuration updated:', data);
-            this.router.navigate(['ViewConfiguration']);
-          },
-          error: (err) => {
-            console.error('Error updating Configuration:', err);
-          },
-        });
-    }
+    // Load campuses and shifts
+    this.loadCampuses();
+    this.loadShifts();
+  }
+
+  // Fetch campuses from the backend
+  loadCampuses() {
+    this.http.get('http://localhost:5028/api/Campus/GetCampus').subscribe({
+      next: (data: any) => {
+        this.Campuses = data; // Assuming the API returns a list of campuses
+      },
+      error: (err) => {
+        console.error('Error loading campuses:', err);
+      },
+    });
+  }
+
+  // Fetch shifts from the backend
+  loadShifts() {
+    this.http.get('http://localhost:5028/api/Shifts').subscribe({
+      next: (data: any) => {
+        this.Shifts = data; // Assuming the API returns a list of shifts
+      },
+      error: (err) => {
+        console.error('Error loading shifts:', err);
+      },
+    });
+  }
+
+  // Load the configuration details from the API
+  loadConfiguration(configId: number) {
+    this.http
+      .get(`http://localhost:5028/api/RoutineConfigurations/${configId}`)
+      .subscribe({
+        next: (data: any) => {
+          // Map API response to component properties
+          this.ConfigName = data.configName;
+          this.ConfigValue = data.cinfigValue;
+          this.selectedCampusId = data.campusId;
+          this.selectedShiftId = data.shiftId;
+        },
+        error: (err) => {
+          console.error('Error loading Configuration:', err);
+        },
+      });
+  }
+
+  // Update the configuration
+  updateConfig() {
+    const updatedData = {
+      RoutineConfigurationId: this.ConfigId,
+      configName: this.ConfigName,
+      configValue: this.ConfigValue,
+      campusId: this.selectedCampusId,
+      shiftId: this.selectedShiftId,
+    };
+
+    this.http
+      .put(
+        `http://localhost:5028/api/RoutineConfigurations/${this.ConfigId}`,
+        updatedData
+      )
+      .subscribe({
+        next: (data) => {
+          console.log('Configuration updated:', data);
+          this.router.navigate(['Configuration/List']);
+        },
+        error: (err) => {
+          console.error('Error updating Configuration:', err);
+        },
+      });
   }
 }

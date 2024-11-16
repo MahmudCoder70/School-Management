@@ -6,7 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-student-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css'],
 })

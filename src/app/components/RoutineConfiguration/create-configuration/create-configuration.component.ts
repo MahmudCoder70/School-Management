@@ -13,22 +13,56 @@ import { Router } from '@angular/router';
 })
 export class CreateConfigurationComponent {
   ConfigName: string = '';
-  ConfigValue: string = '';
-  Campus: any = '';
+  ConfigValue: any;
+  Campuses: any[] = [];
+  Shifts: any[] = [];
+  selectedCampusId: any;
+  selectedShiftId: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  AddConfiguration() {
-    const formData = new FormData();
-    formData.append('ConfigName', this.ConfigName);
-    formData.append('ConfigValue', this.ConfigValue);
-    formData.append('CampusId', this.Campus);
+  ngOnInit() {
+    this.loadCampuses();
+    this.loadShifts();
+  }
+
+  // Fetch campuses from the backend
+  loadCampuses() {
+    this.http.get('http://localhost:5028/api/Campus/GetCampus').subscribe({
+      next: (data: any) => {
+        this.Campuses = data; // Assuming the API returns a list of campuses
+      },
+      error: (err) => {
+        console.error('Error loading campuses:', err);
+      },
+    });
+  }
+
+  loadShifts() {
+    this.http.get('http://localhost:5028/api/Shifts').subscribe({
+      next: (data: any) => {
+        this.Shifts = data;
+      },
+      error: (err) => {
+        console.error('Error loading shifts:', err);
+      },
+    });
+  }
+
+  createConfig() {
+    const formData = {
+      configName: this.ConfigName,
+      cinfigValue: this.ConfigValue,
+      shiftId: this.selectedShiftId,
+      campusId: this.selectedCampusId,
+    };
 
     this.http
       .post('http://localhost:5028/api/RoutineConfigurations', formData)
       .subscribe({
         next: (data) => {
-          this.router.navigate(['ViewConfiguration']);
+          console.log('Configuration created:', data);
+          this.router.navigate(['Configuration/List']);
         },
         error: (err) => {
           console.error('Error creating Configuration:', err);
