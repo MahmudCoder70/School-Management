@@ -26,23 +26,14 @@
 
     <div class="form-group">
       <label for="campus">Campus</label>
-      <select id="campus" [(ngModel)]="Campuses" name="Campuses" required>
+      <select id="campus" [(ngModel)]="Campus" name="CampusId " required>
         <option value="">Select Campus</option>
-        <option *ngFor="let campus of Campuses" [value]="campus.campusId">
-          {{ campus.name }}
+        <option *ngFor="let campus of Campus" [value]="Campus.CampusId">
+          {{ Campus.name }}
         </option>
       </select>
     </div>
 
-    <div class="form-group">
-      <label for="Shifts">Shift</label>
-      <select id="Shifts" [(ngModel)]="Shifts" name="Shifts" required>
-        <option value="">Select Shift</option>
-        <option *ngFor="let shift of Shifts" [value]="shift.shiftId">
-          {{ shift.shiftName }}
-        </option>
-      </select>
-    </div>
-    <button type="submit">Submit</button>
+    <button type="submit">Submite</button>
   </form>
 </div>

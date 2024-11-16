@@ -7,6 +7,13 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
   
+<<<<<<< HEAD
+=======
+  #campus{
+    color: black;
+  }
+  /* Form title styling */
+>>>>>>> 21eb537091fa055f38658a71fe69a4081d34a201
   h2 {
     text-align: center;
     color: orangered;
