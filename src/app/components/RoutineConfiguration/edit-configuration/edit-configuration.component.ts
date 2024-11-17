@@ -70,7 +70,7 @@ export class EditConfigurationComponent implements OnInit {
         next: (data: any) => {
           // Map API response to component properties
           this.ConfigName = data.configName;
-          this.ConfigValue = data.cinfigValue;
+          this.ConfigValue = data.configValue;
           this.selectedCampusId = data.campusId;
           this.selectedShiftId = data.shiftId;
         },

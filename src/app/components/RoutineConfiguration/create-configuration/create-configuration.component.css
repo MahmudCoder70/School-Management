@@ -1,4 +1,4 @@
-.student-form-container {
+/* .student-form-container {
     max-width: 600px;
     margin: 40px auto;
     padding: 20px;
@@ -7,13 +7,7 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
   
-<<<<<<< HEAD
-=======
-  #campus{
-    color: black;
-  }
-  /* Form title styling */
->>>>>>> 21eb537091fa055f38658a71fe69a4081d34a201
+
   h2 {
     text-align: center;
     color: orangered;
@@ -98,5 +92,20 @@
   
   select option {
     padding: 12px;
+  }
+   */
+
+   .container {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .text-danger {
+    font-size: 0.9rem;
   }
   

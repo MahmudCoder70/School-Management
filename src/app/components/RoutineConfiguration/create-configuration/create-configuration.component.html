@@ -1,6 +1,6 @@
 <h2 style="color: orangered">Add Configuration</h2>
 <hr />
-<div class="student-form-container">
+<!-- <div class="student-form-container">
   <form (ngSubmit)="createConfig()">
     <div class="form-group">
       <label for="ConfigName">Configuration Name</label>
@@ -26,14 +26,119 @@
 
     <div class="form-group">
       <label for="campus">Campus</label>
-      <select id="campus" [(ngModel)]="Campus" name="CampusId " required>
+      <select id="campus" [(ngModel)]="Campuses" name="CampusId " required>
         <option value="">Select Campus</option>
-        <option *ngFor="let campus of Campus" [value]="Campus.CampusId">
-          {{ Campus.name }}
+        <option *ngFor="let campus of Campuses" [value]="campus.campusId">
+          {{ campus.name }}
         </option>
       </select>
     </div>
 
-    <button type="submit">Submite</button>
+    <div class="form-group">
+      <label for="campus">Shift</label>
+      <select id="shift" [(ngModel)]="Shifts" name="Shifts " required>
+        <option value="">Select Shift</option>
+        <option *ngFor="let shift of Shifts" [value]="shift.shiftId">
+          {{ shift.shiftName }}
+        </option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div> -->
+
+<div class="container mt-5">
+  <h2>Create Routine Configuration</h2>
+  <form [formGroup]="createConfigForm" (ngSubmit)="createConfiguration()">
+    <!-- Config Name -->
+    <div class="mb-3">
+      <label for="configName" class="form-label">Configuration Name</label>
+      <input
+        type="text"
+        id="configName"
+        class="form-control"
+        formControlName="configName"
+        placeholder="Enter configuration name"
+      />
+      <div
+        *ngIf="
+          createConfigForm.get('configName')?.invalid &&
+          createConfigForm.get('configName')?.touched
+        "
+        class="text-danger"
+      >
+        Configuration Name is required
+      </div>
+    </div>
+
+    <!-- Config Value -->
+    <div class="mb-3">
+      <label for="configValue" class="form-label">Configuration Value</label>
+      <input
+        type="text"
+        id="configValue"
+        class="form-control"
+        formControlName="configValue"
+        placeholder="Enter configuration value"
+      />
+      <div
+        *ngIf="
+          createConfigForm.get('configValue')?.invalid &&
+          createConfigForm.get('configValue')?.touched
+        "
+        class="text-danger"
+      >
+        Configuration Value is required
+      </div>
+    </div>
+
+    <!-- Campus -->
+    <div class="mb-3">
+      <label for="campusId" class="form-label">Select Campus</label>
+      <select id="campusId" class="form-select" formControlName="campusId">
+        <option value="" disabled>Select Campus</option>
+        <option *ngFor="let campus of campuses" [value]="campus.campusId">
+          {{ campus.name }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          createConfigForm.get('campusId')?.invalid &&
+          createConfigForm.get('campusId')?.touched
+        "
+        class="text-danger"
+      >
+        Campus is required
+      </div>
+    </div>
+
+    <!-- Shift -->
+    <div class="mb-3">
+      <label for="shiftId" class="form-label">Select Shift</label>
+      <select id="shiftId" class="form-select" formControlName="shiftId">
+        <option value="" disabled>Select Shift</option>
+        <option *ngFor="let shift of shifts" [value]="shift.shiftId">
+          {{ shift.shiftName }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          createConfigForm.get('shiftId')?.invalid &&
+          createConfigForm.get('shiftId')?.touched
+        "
+        class="text-danger"
+      >
+        Shift is required
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="createConfigForm.invalid"
+    >
+      Create Configuration
+    </button>
   </form>
 </div>
