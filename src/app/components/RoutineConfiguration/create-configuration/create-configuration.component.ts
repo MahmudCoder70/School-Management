@@ -79,6 +79,7 @@ export class CreateConfigurationComponent implements OnInit {
   createConfigForm!: FormGroup;
   campuses: any[] = [];
   shifts: any[] = [];
+  curriculum: any[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -90,6 +91,7 @@ export class CreateConfigurationComponent implements OnInit {
     this.initializeForm();
     this.loadCampuses();
     this.loadShifts();
+    this.loadCurriculams();
   }
 
   // Initialize form
@@ -99,6 +101,7 @@ export class CreateConfigurationComponent implements OnInit {
       configValue: ['', Validators.required],
       campusId: [null, Validators.required],
       shiftId: [null, Validators.required],
+      curriculumId: [null, Validators.required],
     });
   }
 
@@ -126,6 +129,18 @@ export class CreateConfigurationComponent implements OnInit {
     });
   }
 
+  loadCurriculams() {
+    this.http
+      .get('http://localhost:5028/api/Curriculams/GetCurriculum')
+      .subscribe({
+        next: (data: any) => {
+          this.curriculum = data;
+        },
+        error: (err) => {
+          console.error('Error loading Curriculams:', err);
+        },
+      });
+  }
   // Create routine configuration
   createConfiguration() {
     if (this.createConfigForm.invalid) {

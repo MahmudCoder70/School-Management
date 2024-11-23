@@ -17,8 +17,10 @@ export class EditConfigurationComponent implements OnInit {
   ConfigValue: any;
   Campuses: any[] = [];
   Shifts: any[] = [];
+  curriculum: any[] = [];
   selectedCampusId: any;
   selectedShiftId: any;
+  selectedcurriculumId: any;
 
   constructor(
     private http: HttpClient,
@@ -36,6 +38,7 @@ export class EditConfigurationComponent implements OnInit {
     // Load campuses and shifts
     this.loadCampuses();
     this.loadShifts();
+    this.loadCurriculums();
   }
 
   // Fetch campuses from the backend
@@ -62,6 +65,18 @@ export class EditConfigurationComponent implements OnInit {
     });
   }
 
+  loadCurriculums() {
+    this.http
+      .get('http://localhost:5028/api/Curriculams/GetCurriculum')
+      .subscribe({
+        next: (data: any) => {
+          this.curriculum = data; // Assuming the API returns a list of shifts
+        },
+        error: (err) => {
+          console.error('Error loading curriculum:', err);
+        },
+      });
+  }
   // Load the configuration details from the API
   loadConfiguration(configId: number) {
     this.http
@@ -73,6 +88,7 @@ export class EditConfigurationComponent implements OnInit {
           this.ConfigValue = data.configValue;
           this.selectedCampusId = data.campusId;
           this.selectedShiftId = data.shiftId;
+          this.selectedcurriculumId = data.curriculumId;
         },
         error: (err) => {
           console.error('Error loading Configuration:', err);
@@ -88,6 +104,7 @@ export class EditConfigurationComponent implements OnInit {
       configValue: this.ConfigValue,
       campusId: this.selectedCampusId,
       shiftId: this.selectedShiftId,
+      curriculumId: this.selectedcurriculumId,
     };
 
     this.http

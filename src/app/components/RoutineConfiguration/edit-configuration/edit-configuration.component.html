@@ -56,6 +56,24 @@
         </option>
       </select>
     </div>
+
+    <div class="form-group">
+      <label for="shifts">Curriculum</label>
+      <select
+        id="shifts"
+        [(ngModel)]="curriculum"
+        name="curriculum"
+        class="form-control"
+        required
+      >
+        <option value="" disabled>Select a Curriculum</option>
+
+        <option *ngFor="let curriculums of curriculum" [value]="curriculums.id">
+          {{ curriculums.curriculumName }}
+        </option>
+      </select>
+    </div>
+
     <div class="form-actions">
       <button type="submit" class="btn-submit">Update</button>
       <button

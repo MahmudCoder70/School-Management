@@ -132,6 +132,32 @@
       </div>
     </div>
 
+    <div class="mb-3">
+      <label for="curriculumId" class="form-label">Select curriculum</label>
+      <select
+        id="curriculumId"
+        class="form-select"
+        formControlName="curriculumId"
+      >
+        <option value="" disabled>Select Curriculum</option>
+        <option
+          *ngFor="let curriculums of curriculum"
+          [value]="curriculums.curriculumId"
+        >
+          {{ curriculums.curriculumName }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          createConfigForm.get('curriculumId')?.invalid &&
+          createConfigForm.get('curriculumId')?.touched
+        "
+        class="text-danger"
+      >
+        curriculum is required
+      </div>
+    </div>
+
     <!-- Submit Button -->
     <button
       type="submit"
