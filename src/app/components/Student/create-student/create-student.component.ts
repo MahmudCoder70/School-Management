@@ -15,10 +15,12 @@ export class CreateStudentComponent {
   selectedCampusId: string = '';
   selectedClassId: string = '';
   selectedSectionId: string = '';
+  selectedShiftId: string = '';
 
   campuses: { campusId: string; name: string }[] = [];
   classes: { classId: string; className: string }[] = [];
   sections: { sectionId: string; sectionName: string }[] = [];
+  shifts: { shiftId: string; shiftName: string }[] = [];
 
   fName: string = '';
   lName: string = '';
@@ -35,6 +37,7 @@ export class CreateStudentComponent {
     this.fetchCampuses();
     this.fetchClasses();
     this.fetchSections();
+    this.fetchShifts();
   }
 
   fetchCampuses() {
@@ -52,6 +55,20 @@ export class CreateStudentComponent {
       });
   }
 
+  fetchShifts() {
+    this.http
+      .get<{ shiftId: string; shiftName: string }[]>(
+        'http://localhost:5028/api/Shifts'
+      )
+      .subscribe({
+        next: (data) => {
+          this.shifts = data;
+        },
+        error: (err) => {
+          console.error('Error fetching campuses:', err);
+        },
+      });
+  }
   fetchClasses() {
     this.http
       .get<{ classId: string; className: string }[]>(
@@ -70,7 +87,7 @@ export class CreateStudentComponent {
   fetchSections() {
     this.http
       .get<{ sectionId: string; sectionName: string }[]>(
-        'http://localhost:5028/api/Sections/GetSections'
+        'http://localhost:5028/api/Sections'
       )
       .subscribe({
         next: (data) => {
@@ -116,6 +133,7 @@ export class CreateStudentComponent {
     formData.append('CampusId', this.selectedCampusId);
     formData.append('classId', this.selectedClassId);
     formData.append('sectionId', this.selectedSectionId);
+    formData.append('shiftId', this.selectedShiftId);
 
     this.http.post('http://localhost:5028/api/Students', formData).subscribe({
       next: (data) => {

@@ -15,10 +15,12 @@ export class EditStudentComponent implements OnInit {
   selectedCampusId: string = '';
   selectedClassId: string = '';
   selectedSectionId: string = '';
+  selectedShiftId: string = '';
 
   campuses: { campusId: string; name: string }[] = [];
   classes: { classId: string; className: string }[] = [];
   sections: { sectionId: string; sectionName: string }[] = [];
+  shifts: { shiftId: string; shiftName: string }[] = [];
 
   fName: string = '';
   lName: string = '';
@@ -47,6 +49,7 @@ export class EditStudentComponent implements OnInit {
     this.fetchCampuses();
     this.fetchClasses();
     this.fetchSections();
+    this.fetchShifts();
   }
 
   fetchStudentById(id: string) {
@@ -61,6 +64,7 @@ export class EditStudentComponent implements OnInit {
         this.selectedCampusId = student.campusId;
         this.selectedClassId = student.classId;
         this.selectedSectionId = student.sectionId;
+        this.selectedShiftId = student.shiftId;
         this.birthCert = student.birthCertificateNumber;
         this.address = student.address;
         this.imagePath = student.imagePath; // Load image preview if available
@@ -69,6 +73,21 @@ export class EditStudentComponent implements OnInit {
         console.error('Error fetching student data:', err);
       },
     });
+  }
+
+  fetchShifts() {
+    this.http
+      .get<{ shiftId: string; shiftName: string }[]>(
+        'http://localhost:5028/api/Shifts'
+      )
+      .subscribe({
+        next: (data) => {
+          this.shifts = data;
+        },
+        error: (err) => {
+          console.error('Error fetching shifts:', err);
+        },
+      });
   }
 
   fetchCampuses() {
@@ -131,6 +150,7 @@ export class EditStudentComponent implements OnInit {
     formData.append('CampusId', this.selectedCampusId);
     formData.append('classId', this.selectedClassId);
     formData.append('sectionId', this.selectedSectionId);
+    formData.append('shiftId', this.selectedShiftId);
 
     if (this.studentId) {
       this.http

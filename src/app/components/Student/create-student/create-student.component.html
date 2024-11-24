@@ -94,6 +94,21 @@
     </div>
 
     <div class="form-group">
+      <label for="shift">Shift</label>
+      <select
+        id="shift"
+        [(ngModel)]="selectedShiftId"
+        name="selectedShiftId"
+        required
+      >
+        <option value="">Select Shift</option>
+        <option *ngFor="let shift of shifts" [value]="shift.shiftId">
+          {{ shift.shiftName }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
       <label for="birthCert">Birth Certificate Number</label>
       <input
         type="text"
